@@ -1,4 +1,3 @@
-// import React from "react";
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
@@ -10,7 +9,7 @@ const Login = () => {
   return (
     <Div
       css={css`
-        background-color: black;
+        color: black;
       `}
     >
       LOGIN

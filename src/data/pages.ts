@@ -2,6 +2,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 
 interface PageInfo {
+  name: string;
   path: string;
   title: string;
   component: () => JSX.Element;
@@ -9,11 +10,13 @@ interface PageInfo {
 
 const pages: Array<PageInfo> = [
   {
-    path: "/",
+    name: "Home",
     title: "꽃과 케이크",
+    path: "/",
     component: Home,
   },
   {
+    name: "Login",
     path: "/login",
     title: "로그인",
     component: Login,

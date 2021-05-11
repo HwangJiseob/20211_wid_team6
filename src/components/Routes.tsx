@@ -8,7 +8,7 @@ const Routes = () => {
       {pages.map((page) => {
         return (
           <Route
-            key={page.path}
+            key={page.name}
             exact
             path={page.path}
             component={page.component}
