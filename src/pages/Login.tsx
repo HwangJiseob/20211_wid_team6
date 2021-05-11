@@ -6,16 +6,16 @@ const Div = styled.div`
   color: white;
 `;
 
-const About = () => {
+const Login = () => {
   return (
     <Div
       css={css`
         background-color: black;
       `}
     >
-      about
+      LOGIN
     </Div>
   );
 };
 
-export default About;
+export default Login;
