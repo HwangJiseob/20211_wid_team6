@@ -1,13 +1,6 @@
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 
-interface PageInfo {
-  name: string;
-  path: string;
-  title: string;
-  component: () => JSX.Element;
-}
-
 const pages: Array<PageInfo> = [
   {
     name: "Home",

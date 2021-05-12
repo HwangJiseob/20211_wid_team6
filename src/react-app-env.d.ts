@@ -16,3 +16,10 @@ declare interface ThemeProps {
   theme: string;
   setTheme: React.Dispatch<React.SetStateAction<string>>;
 }
+
+declare interface PageInfo {
+  name: string; // page filename
+  path: string; // relative path for react-router-dom route
+  title: string; // title content for <title> tag
+  component: () => JSX.Element;
+}

@@ -2,11 +2,13 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 
-import LayoutWrapper from "./layout/Wrapper";
-import Header from "./layout/Header";
-import Main from "./layout/Main";
-import Footer from "./layout/Footer";
-import Global from "./layout/Global";
+import {
+  Wrapper as LayoutWrapper,
+  Header,
+  Main,
+  Footer,
+  Global,
+} from "./layout";
 
 const GlobalWrapper = ({ children }: ReactProps) => {
   const [theme, setTheme] = React.useState("light");
