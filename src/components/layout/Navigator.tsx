@@ -1,5 +1,6 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import { css } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 
 interface Item {
   name: string;
@@ -20,6 +21,11 @@ const navigator = css`
 `;
 
 const Navigator = () => {
+  const { theme, setTheme }: any = useTheme();
+  const changeTheme = React.useCallback(() => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+  }, [theme, setTheme]);
   return (
     <ul css={navigator}>
       {items.map((item: Item) => {
@@ -34,6 +40,11 @@ const Navigator = () => {
           </li>
         );
       })}
+      <li>
+        <button type="button" onClick={changeTheme}>
+          dd
+        </button>
+      </li>
     </ul>
   );
 };
