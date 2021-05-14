@@ -42,7 +42,7 @@ const Navigator = () => {
       })}
       <li>
         <button type="button" onClick={changeTheme}>
-          dd
+          change
         </button>
       </li>
     </ul>

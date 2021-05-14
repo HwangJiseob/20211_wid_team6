@@ -30,6 +30,7 @@ const Container = styled.div`
   padding: 5px 10px;
   padding-top: 10px;
   max-width: ${main.max_width};
+  text-align: center; // 임시
 `;
 
 export default Footer;
