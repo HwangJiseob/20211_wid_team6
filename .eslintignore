@@ -1,0 +1,4 @@
+# settings
+tsconfig.json
+tsconfig.paths.json
+craco.config.js

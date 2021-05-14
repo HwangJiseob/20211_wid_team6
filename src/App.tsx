@@ -1,6 +1,6 @@
 import React from "react";
 
-import { GlobalWrapper, Routes } from "./components";
+import { GlobalWrapper, Routes } from "@components";
 
 const App = () => {
   // const [theme, setTheme] = React.useState();

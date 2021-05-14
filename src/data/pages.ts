@@ -1,4 +1,4 @@
-import { Home, Login } from "../pages";
+import { Home, Login } from "@pages";
 
 const pages: Array<PageInfo> = [
   {

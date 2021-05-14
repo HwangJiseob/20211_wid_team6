@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
-import { Navigator } from ".";
-import { layout } from "../../libs/config";
+import { layout } from "@libs/config";
+import Navigator from "./Navigator";
 
 const { main, header } = layout;
 

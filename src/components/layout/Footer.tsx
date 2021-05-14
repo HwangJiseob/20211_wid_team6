@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { layout } from "../../libs/config";
+import { layout } from "@libs/config";
 
 const { main, footer } = layout;
 
