@@ -1,10 +1,8 @@
 import React from "react";
 
-export const preventTransition = (dispatch: any) => {
+export const preventTransition = (dispatch: React.Dispatch<string>) => {
   React.useEffect(() => {
-    setTimeout(() => {
-      dispatch("transition-duration: 0.5s;");
-    }, 0);
+    dispatch("transition-duration: 0.5s;");
   }, [dispatch]);
 };
 
