@@ -1,7 +1,16 @@
+import React from "react";
 import { Global, css, useTheme } from "@emotion/react";
 
 export default () => {
   const { theme }: any = useTheme();
+  const [transition, setTransition] = React.useState("");
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setTransition("transition-duration: 0.5s;");
+    }, 0);
+  }, []);
+
   const global = css`
     body {
       margin: 0;
@@ -10,9 +19,9 @@ export default () => {
         "Helvetica Neue", sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      background: ${theme === "light" ? "none" : "#181818"};
+      background: ${theme === "light" ? "#fff" : "#181818"} !important;
       color: ${theme === "light" ? "initial" : "#fff"};
-      transition-duration: 0.5s;
+      ${transition}
       transition-property: background-color, color;
     }
 

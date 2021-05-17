@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 
+import { findPreferColor } from "@libs/functions";
 import {
   Wrapper as LayoutWrapper,
   Header,
@@ -11,7 +12,8 @@ import {
 } from "./layout";
 
 const GlobalWrapper = ({ children }: ReactProps) => {
-  const [theme, setTheme] = React.useState("light");
+  const isLight = findPreferColor();
+  const [theme, setTheme] = React.useState(isLight ? "light" : "dark");
   const themeProps: ThemeProps = {
     theme,
     setTheme,
