@@ -1,7 +1,7 @@
 import React from "react";
 import { Global, css, useTheme } from "@emotion/react";
 
-import { preventTransition } from "@libs/functions";
+import { preventTransition } from "@libs/hooks";
 
 export default () => {
   const { theme }: any = useTheme();

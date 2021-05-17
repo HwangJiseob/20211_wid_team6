@@ -53,7 +53,7 @@
   "overrides":[
     {
       /* disable rules-of-hooks for custom hook */
-      "files": ["src/libs/functions.ts"],
+      "files": ["src/libs/hooks.ts"],
       "rules": {
         "react-hooks/rules-of-hooks": 0
       }}
