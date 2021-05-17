@@ -9,6 +9,7 @@
     "react-app",
     "eslint:recommended",
     "plugin:react/recommended",
+    // "plugin:react-hooks/recommended",
     "airbnb",
     "plugin:prettier/recommended"
   ],
@@ -48,5 +49,13 @@
         "endOfLine": "auto"
       }
     ]
-  }
+  },
+  "overrides":[
+    {
+      /* disable rules-of-hooks for custom hook */
+      "files": ["src/libs/functions.ts"],
+      "rules": {
+        "react-hooks/rules-of-hooks": 0
+      }}
+  ]
 }

@@ -1,15 +1,13 @@
 import React from "react";
 import { Global, css, useTheme } from "@emotion/react";
 
+import { preventTransition } from "@libs/functions";
+
 export default () => {
   const { theme }: any = useTheme();
   const [transition, setTransition] = React.useState("");
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setTransition("transition-duration: 0.5s;");
-    }, 0);
-  }, []);
+  preventTransition(setTransition);
 
   const global = css`
     body {
