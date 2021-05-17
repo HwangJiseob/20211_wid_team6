@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 `;
 const Container = styled.div`
   /* display: flex; */
-  display: "block"; /* 임시 */
+  display: block;
   justify-content: space-between;
   width: 100%;
   height: 100%;
