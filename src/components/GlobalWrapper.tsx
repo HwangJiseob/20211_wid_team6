@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
+import { HelmetProvider } from "react-helmet-async";
 
 import { findPreferColor } from "@libs/functions";
 import {
@@ -19,16 +20,18 @@ const GlobalWrapper = ({ children }: ReactProps) => {
     setTheme,
   };
   return (
-    <BrowserRouter>
-      <ThemeProvider theme={themeProps}>
-        <LayoutWrapper>
-          <Global />
-          <Header />
-          <Main>{children}</Main>
-          <Footer />
-        </LayoutWrapper>
-      </ThemeProvider>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={themeProps}>
+          <LayoutWrapper>
+            <Global />
+            <Header />
+            <Main>{children}</Main>
+            <Footer />
+          </LayoutWrapper>
+        </ThemeProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 };
 

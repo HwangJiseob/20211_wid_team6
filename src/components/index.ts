@@ -1,13 +1,13 @@
 import { Wrapper, Header, Main, Footer, Global } from "./layout";
 import GlobalWrapper from "./GlobalWrapper";
+import Page from "./Page";
 import Routes from "./Routes";
 
-// const { Wrapper, Header, Main, Footer, Global } = layout;
-
-export { GlobalWrapper, Routes, Wrapper, Header, Main, Footer, Global };
+export { GlobalWrapper, Page, Routes, Wrapper, Header, Main, Footer, Global };
 
 const components = {
   GlobalWrapper,
+  Page,
   Routes,
   Wrapper,
   Header,
