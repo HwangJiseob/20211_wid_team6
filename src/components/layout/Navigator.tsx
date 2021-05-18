@@ -3,18 +3,9 @@ import { Link } from "react-router-dom";
 import { css, useTheme } from "@emotion/react";
 
 import { layout } from "@libs/config";
+import { items } from "@data/pages";
 
 const { mobileBreakpoint, header } = layout;
-
-interface Item {
-  name: string;
-  path: string;
-}
-
-const items: Array<Item> = [
-  { name: "Home", path: "/" },
-  { name: "Login", path: "/login" },
-];
 
 const navigator = css`
   all: unset;
@@ -34,6 +25,8 @@ const navigator = css`
 `;
 
 const navLink = css`
+  color: inherit;
+  text-decoration: none;
   width: 100%;
   height: 100%;
   display: grid;
@@ -48,7 +41,7 @@ const Navigator = () => {
   }, [theme, setTheme]);
   return (
     <ul css={navigator}>
-      {items.map((item: Item) => {
+      {items.map((item: PageInfo) => {
         return (
           <li key={item.path}>
             <Link to={item.path} css={navLink}>

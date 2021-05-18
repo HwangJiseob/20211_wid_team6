@@ -6,7 +6,7 @@ const Div = styled.div`
   color: white;
 `;
 
-const Login = () => {
+const MyPage = () => {
   return (
     <>
       <Div
@@ -20,4 +20,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default MyPage;

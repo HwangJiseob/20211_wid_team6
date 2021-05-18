@@ -1,4 +1,4 @@
-import { Home, Login } from "@pages";
+import { Home, MyPage } from "@pages";
 
 export const home = {
   name: "Home",
@@ -7,9 +7,9 @@ export const home = {
 };
 
 export const login = {
-  name: "Login",
-  path: "/login",
-  title: "로그인",
+  name: "MyPage",
+  path: "/mypage",
+  title: "마이페이지",
 };
 
 export const search = {
@@ -18,6 +18,17 @@ export const search = {
   title: "후기",
 };
 
+export const items: Array<PageInfo> = [
+  {
+    ...home,
+    component: Home,
+  },
+  {
+    ...login,
+    component: MyPage,
+  },
+];
+
 const pages: Array<PageInfo> = [
   {
     ...home,
@@ -25,7 +36,7 @@ const pages: Array<PageInfo> = [
   },
   {
     ...login,
-    component: Login,
+    component: MyPage,
   },
 ];
 

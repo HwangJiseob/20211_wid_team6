@@ -1,11 +1,11 @@
 import Home from "./Home";
-import Login from "./Login";
+import MyPage from "./MyPage";
 
-export { Home, Login };
+export { Home, MyPage };
 
 const pageComponents = {
   Home,
-  Login,
+  MyPage,
 };
 
 export default pageComponents;
