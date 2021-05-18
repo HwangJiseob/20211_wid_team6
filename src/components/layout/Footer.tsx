@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 import { layout } from "@libs/config";
 
-const { main, footer } = layout;
+const { main, footer, mobileBreakpoint } = layout;
 
 const Footer = () => {
   return (
@@ -22,6 +22,9 @@ const Wrapper = styled.div`
   min-height: ${footer.pc_height};
   background: ${"gray"};
   color: ${"white"};
+  ${mobileBreakpoint()} {
+    display: none;
+  }
 `;
 const Container = styled.div`
   display: flex;

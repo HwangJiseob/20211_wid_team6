@@ -12,6 +12,12 @@ export const login = {
   title: "로그인",
 };
 
+export const search = {
+  name: "Reviews",
+  path: "/reviews",
+  title: "후기",
+};
+
 const pages: Array<PageInfo> = [
   {
     ...home,

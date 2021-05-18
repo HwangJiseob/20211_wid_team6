@@ -1,6 +1,6 @@
 export const layout: any = {
-  mobile_breakpoint: (width: string) =>
-    `@media screen and (max-width: ${width || "768px"})`,
+  mobileBreakpoint: (width: string) =>
+    `@media screen and (max-width: ${width || "480px"})`,
   header: {
     pc_height: "60px",
     mobile_height: "60px",
@@ -13,10 +13,6 @@ export const layout: any = {
     mobile_height: "30px",
   },
 };
-
-// const theme:any = {
-
-// }
 
 const config: any = {
   layout,
