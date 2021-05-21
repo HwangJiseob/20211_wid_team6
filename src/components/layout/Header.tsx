@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <Wrapper>
       <Container>
-        <div>header</div>
+        <div>💐꽃과 케이크🎂</div>
         <Navigator />
       </Container>
     </Wrapper>

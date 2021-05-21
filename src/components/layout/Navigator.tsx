@@ -21,7 +21,12 @@ const navigator = css`
     /* justify-items: space-between; */
     bottom: 0;
     left: 0;
+    background: inherit;
   }
+`;
+
+const navItem = css`
+  padding-right: 5px;
 `;
 
 const navLink = css`
@@ -43,14 +48,14 @@ const Navigator = () => {
     <ul css={navigator}>
       {items.map((item: PageInfo) => {
         return (
-          <li key={item.path}>
+          <li key={item.path} css={navItem}>
             <Link to={item.path} css={navLink}>
               {item.name}
             </Link>
           </li>
         );
       })}
-      <li>
+      <li css={navItem}>
         <button type="button" onClick={changeTheme}>
           change
         </button>

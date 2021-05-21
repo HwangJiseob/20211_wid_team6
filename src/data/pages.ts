@@ -2,7 +2,7 @@ import { Home, MyPage } from "@pages";
 
 export const home = {
   name: "Home",
-  title: "꽃과 케이크",
+  title: "💐꽃과 케이크🎂",
   path: "/",
 };
 

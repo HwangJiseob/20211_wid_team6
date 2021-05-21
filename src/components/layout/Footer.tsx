@@ -23,7 +23,8 @@ const Wrapper = styled.div`
   background: ${"gray"};
   color: ${"white"};
   ${mobileBreakpoint()} {
-    display: none;
+    background: inherit;
+    min-height: 60px;
   }
 `;
 const Container = styled.div`
@@ -34,6 +35,9 @@ const Container = styled.div`
   padding-top: 10px;
   max-width: ${main.max_width};
   text-align: center; // 임시
+  ${mobileBreakpoint()} {
+    display: none;
+  }
 `;
 
 export default Footer;
