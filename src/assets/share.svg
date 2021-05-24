@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22">
+  <g id="share_White" data-name="share White" transform="translate(-327 -62.723)">
+    <rect id="bg" width="20" height="22" transform="translate(327 62.723)" fill="#515c6f" opacity="0"/>
+    <path id="Shape" d="M4,13v8a1.835,1.835,0,0,0,1.6,2h9.627a1.835,1.835,0,0,0,1.6-2V13" transform="translate(327 60.723)" fill="none" stroke="#515c6f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill-rule="evenodd"/>
+    <path id="Shape-2" data-name="Shape" d="M16,7,12,3,8,7" transform="translate(325.388 63)" fill="none" stroke="#515c6f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill-rule="evenodd"/>
+    <path id="Shape-3" data-name="Shape" d="M12,3V16" transform="translate(325.399 63)" fill="none" stroke="#515c6f" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill-rule="evenodd"/>
+  </g>
+</svg>

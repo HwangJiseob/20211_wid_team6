@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="24" height="24" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="icons_dark_marker" data-name="icons/dark/marker" clip-path="url(#clip-path)">
+    <rect id="bg" width="24" height="24" fill="#fff" opacity="0"/>
+    <path id="패스_142" data-name="패스 142" d="M18,8.364C18,14.091,10.5,19,10.5,19S3,14.091,3,8.364A7.433,7.433,0,0,1,10.5,1,7.433,7.433,0,0,1,18,8.364Z" transform="translate(2 2)" fill="none" stroke="#515c6f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <circle id="타원_34" data-name="타원 34" cx="2.589" cy="2.589" r="2.589" transform="translate(9.911 7.808)" fill="none" stroke="#515c6f" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+</svg>
