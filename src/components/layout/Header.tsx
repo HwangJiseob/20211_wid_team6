@@ -2,19 +2,27 @@ import styled from "@emotion/styled";
 
 import { layout } from "@libs/config";
 import Navigator from "./Navigator";
+import MobileHeader from "./MobileHeader";
 
-const { main, header } = layout;
+const { main, header, mobileBreakpoint } = layout;
 
 const Header = () => {
   return (
     <Wrapper>
       <Container>
-        <div>💐꽃과 케이크🎂</div>
+        <MobileHeader />
+        <Logo>💐꽃과 케이크🎂</Logo>
         <Navigator />
       </Container>
     </Wrapper>
   );
 };
+
+const Logo = styled.div`
+  ${mobileBreakpoint()} {
+    display: none;
+  }
+`;
 
 const Wrapper = styled.div`
   display: flex;
@@ -34,4 +42,5 @@ const Container = styled.div`
   box-sizing: border-box;
   padding: 5px 10px;
 `;
+
 export default Header;
