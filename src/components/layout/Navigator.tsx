@@ -23,6 +23,7 @@ const NavigatorList = styled("ul")<NavigatorProps>`
     position: fixed;
     height: ${header.mobile_height};
     display: grid;
+    box-shadow: 0px 20px 80px -20px ${(props: NavigatorProps) => (props.theme === "light" ? "gray" : "gray")};
     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
     bottom: 0;
     left: 0;
