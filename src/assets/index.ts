@@ -11,6 +11,7 @@ import { ReactComponent as ManSVG } from "./man.svg";
 import { ReactComponent as MarkerSVG } from "./marker.svg";
 import { ReactComponent as ReviewSVG } from "./review.svg";
 import { ReactComponent as SearchSVG } from "./search.svg";
+import { ReactComponent as ShareSVG } from "./share.svg";
 
 export {
   ArrowRightSVG,
@@ -26,6 +27,7 @@ export {
   MarkerSVG,
   ReviewSVG,
   SearchSVG,
+  ShareSVG,
 };
 
 export default {
@@ -42,4 +44,5 @@ export default {
   MarkerSVG,
   ReviewSVG,
   SearchSVG,
+  ShareSVG,
 };

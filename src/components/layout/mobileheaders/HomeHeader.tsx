@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
 import { HeartSVG, CartSVG, SearchSVG } from "@assets";
-import Wrapper from "./Wrapper";
+import { Wrapper } from "./Commons";
 
 const HomeHeader = () => {
   const inputContainer = css`

@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import {
   HomeMobileHeader,
   SearchMobileHeader,
+  StoreMobileHeader,
 } from "@components/layout/mobileheaders";
 
 const MobileHeader = () => {
@@ -15,6 +16,8 @@ const MobileHeader = () => {
       return <HomeMobileHeader />;
     case "search":
       return <SearchMobileHeader />;
+    case "stores":
+      return <StoreMobileHeader />;
     default:
       return <>test</>;
   }
