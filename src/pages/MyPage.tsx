@@ -1,5 +1,5 @@
 import React from "react";
-import { css } from "@emotion/react";
+import { css, useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
 const Div = styled.div`
@@ -7,6 +7,12 @@ const Div = styled.div`
 `;
 
 const MyPage = () => {
+  const { theme, setTheme }: any = useTheme();
+  const changeTheme = React.useCallback(() => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+  }, [theme, setTheme]);
+
   return (
     <>
       <Div
@@ -16,6 +22,9 @@ const MyPage = () => {
       >
         LOGIN
       </Div>
+      <button type="button" onClick={changeTheme}>
+        change
+      </button>
     </>
   );
 };

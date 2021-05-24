@@ -21,5 +21,9 @@ declare interface PageInfo {
   name: string; // page filename
   path: string; // relative path for react-router-dom route
   title: string; // title content for <title> tag
+  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+}
+
+declare interface PageRouteInfo extends PageInfo {
   component: () => JSX.Element;
 }

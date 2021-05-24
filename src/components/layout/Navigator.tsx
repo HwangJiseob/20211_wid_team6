@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "@emotion/styled";
 import { css, useTheme } from "@emotion/react";
 
 import { layout } from "@libs/config";
@@ -7,7 +8,12 @@ import { items } from "@data/pages";
 
 const { mobileBreakpoint, header } = layout;
 
-const navigator = css`
+interface NavigatorProps {
+  children: any;
+  theme: string;
+}
+
+const NavigatorList = styled("ul")<NavigatorProps>`
   all: unset;
   list-style: none;
   display: flex;
@@ -18,20 +24,25 @@ const navigator = css`
     height: ${header.mobile_height};
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-    /* justify-items: space-between; */
     bottom: 0;
     left: 0;
-    background: inherit;
+    transition-duration: 0.5s;
+    background: ${(props: NavigatorProps) =>
+      props.theme === "light" ? "#fff" : "#181818"};
   }
 `;
 
 const navItem = css`
-  padding-right: 5px;
+  display: block;
+  color: #515c6f;
+  font-weight: bold;
+  text-align: center;
 `;
 
 const navLink = css`
   color: inherit;
   text-decoration: none;
+  font-size: 11px;
   width: 100%;
   height: 100%;
   display: grid;
@@ -39,28 +50,23 @@ const navLink = css`
 `;
 
 const Navigator = () => {
-  const { theme, setTheme }: any = useTheme();
-  const changeTheme = React.useCallback(() => {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-  }, [theme, setTheme]);
+  const { theme }: any = useTheme();
   return (
-    <ul css={navigator}>
+    <NavigatorList theme={theme}>
       {items.map((item: PageInfo) => {
+        const Icon = item.icon;
         return (
-          <li key={item.path} css={navItem}>
+          <li key={item.path}>
             <Link to={item.path} css={navLink}>
-              {item.name}
+              <div css={navItem}>
+                <Icon width={20} height={20} />
+                <div>{item.name}</div>
+              </div>
             </Link>
           </li>
         );
       })}
-      <li css={navItem}>
-        <button type="button" onClick={changeTheme}>
-          change
-        </button>
-      </li>
-    </ul>
+    </NavigatorList>
   );
 };
 
