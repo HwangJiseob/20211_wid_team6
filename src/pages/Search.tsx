@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 
 import { FilterSVG, HeartSVG } from "@assets";
@@ -7,6 +8,13 @@ import { FilterSVG, HeartSVG } from "@assets";
 const items = ["스노우폭스", "르망마지끄", "케이크", "꽃"];
 
 const Search = () => {
+  const Cards = styled.ul`
+    all: unset;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+  `;
+
   return (
     <div>
       <Carousel>carousel</Carousel>
@@ -28,6 +36,7 @@ const Search = () => {
 
 const Card = ({ children }: ReactProps) => {
   const wrapper = css`
+    /* all: unset; */
     width: 100%;
     height: 180px;
   `;
@@ -41,26 +50,24 @@ const Card = ({ children }: ReactProps) => {
     right: 10px;
     top: 15px;
   `;
+
   return (
-    <div css={wrapper}>
-      <div css={imageContainer}>
-        <HeartSVG css={icon} />
+    <Link
+      to={`/${children}`}
+      css={css`
+        color: inherit;
+        text-decoration: none;
+      `}
+    >
+      <div css={wrapper}>
+        <div css={imageContainer}>
+          <HeartSVG css={icon} />
+        </div>
+        <div>{children}</div>
       </div>
-      <div>{children}</div>
-    </div>
+    </Link>
   );
 };
-
-const Cards = styled.ul`
-  all: unset;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
-`;
-
-// const Card = styled.div`
-//   background: none;
-// `;
 
 const Carousel = styled.div`
   display: grid;
