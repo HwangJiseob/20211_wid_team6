@@ -5,16 +5,9 @@ import { css } from "@emotion/react";
 
 import { FilterSVG, HeartSVG } from "@assets";
 
-const items = ["스노우폭스", "르망마지끄", "케이크", "꽃"];
+import { bakeries } from "@data/stores";
 
 const Search = () => {
-  const Cards = styled.ul`
-    all: unset;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-  `;
-
   return (
     <div>
       <Carousel>carousel</Carousel>
@@ -26,15 +19,22 @@ const Search = () => {
         </div>
       </MidLine>
       <Cards>
-        {items.map((item) => (
-          <Card key={item}>{item}</Card>
+        {bakeries.map((store: Store) => (
+          <Card key={store.id} store={store} />
         ))}
       </Cards>
     </div>
   );
 };
 
-const Card = ({ children }: ReactProps) => {
+const Cards = styled.ul`
+  all: unset;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+`;
+
+const Card = ({ store }: StoreProps) => {
   const wrapper = css`
     /* all: unset; */
     width: 100%;
@@ -53,7 +53,7 @@ const Card = ({ children }: ReactProps) => {
 
   return (
     <Link
-      to={`/${children}`}
+      to={store.path}
       css={css`
         color: inherit;
         text-decoration: none;
@@ -63,7 +63,7 @@ const Card = ({ children }: ReactProps) => {
         <div css={imageContainer}>
           <HeartSVG css={icon} />
         </div>
-        <div>{children}</div>
+        <div>{store.name}</div>
       </div>
     </Link>
   );

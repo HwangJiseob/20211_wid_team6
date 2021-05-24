@@ -27,3 +27,17 @@ declare interface PageInfo {
 declare interface PageRouteInfo extends PageInfo {
   component: () => JSX.Element;
 }
+
+declare interface Store {
+  name: string;
+  id: string;
+  path: string;
+  address: string;
+  hour: [string, string];
+  sector: "bakery" | "florist";
+}
+
+declare interface StoreProps {
+  children?: ReactProps;
+  store: Store;
+}

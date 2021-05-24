@@ -9,10 +9,11 @@ import {
 const MobileHeader = () => {
   const location = useLocation();
   const { pathname } = location;
-  switch (pathname) {
-    case "/":
+  const standard = pathname.split("/")[1];
+  switch (standard) {
+    case "":
       return <HomeMobileHeader />;
-    case "/search":
+    case "search":
       return <SearchMobileHeader />;
     default:
       return <>test</>;
