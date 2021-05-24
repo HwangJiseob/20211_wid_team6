@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import pages from "@data/pages";
 
 import Page from "@components/Page";
+import { NotFound } from "@pages";
 
 const Routes = () => {
   return (
@@ -23,6 +24,15 @@ const Routes = () => {
           />
         );
       })}
+      <Route
+        component={() => {
+          return (
+            <Page title="Page Error">
+              <NotFound />
+            </Page>
+          );
+        }}
+      />
     </Switch>
   );
 };
