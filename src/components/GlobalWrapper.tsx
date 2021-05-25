@@ -21,7 +21,7 @@ const GlobalWrapper = ({ children }: ReactProps) => {
   };
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/20211_wid_team6">
         <ThemeProvider theme={themeProps}>
           <LayoutWrapper>
             <Global />
