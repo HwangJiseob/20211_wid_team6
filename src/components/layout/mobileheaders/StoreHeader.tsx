@@ -1,19 +1,25 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import { ArrowRightSVG, HomeSVG, SearchSVG, ShareSVG } from "@assets";
+import IconButton from "@components/IconButton";
 import { Wrapper, Container, LeftSide, Center, RightSide } from "./Commons";
 
 const StoreHeader = () => {
-  const location = useLocation();
+  const history = useHistory();
+  const { location } = history;
   const { pathname } = location;
   const name = pathname.split("/")[2];
   return (
     <Wrapper>
       <Container>
         <LeftSide>
-          <ArrowRightSVG width="20px" height="20px" />
-          <HomeSVG width="20px" height="20px" />
+          <IconButton onClick={() => history.goBack()}>
+            <ArrowRightSVG width="20px" height="20px" />
+          </IconButton>
+          <IconButton onClick={() => history.push("/")}>
+            <HomeSVG width="20px" height="20px" />
+          </IconButton>
         </LeftSide>
         <Center>{name}</Center>
         <RightSide>

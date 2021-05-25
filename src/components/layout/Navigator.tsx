@@ -57,7 +57,6 @@ const Navigator = () => {
   const location = useLocation();
   const { pathname } = location;
   const page = pathname.split("/")[1];
-  console.log(page);
   return (
     <NavigatorList theme={theme} page={page}>
       {items.map((item: PageInfo) => {

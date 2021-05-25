@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
 import { HeartSVG, CartSVG, SearchSVG } from "@assets";
+import IconButton from "@components/IconButton";
 import { Wrapper } from "./Commons";
 
 const HomeHeader = () => {
@@ -44,8 +45,12 @@ const HomeHeader = () => {
           <input id="search-header-home" css={textInput} />
         </label>
         <div css={rightSide}>
-          <HeartSVG width="20px" height="20px" />
-          <CartSVG width="20px" height="20px" />
+          <IconButton>
+            <HeartSVG width="20px" height="20px" />
+          </IconButton>
+          <IconButton>
+            <CartSVG width="20px" height="20px" />
+          </IconButton>
         </div>
       </Container>
     </Wrapper>

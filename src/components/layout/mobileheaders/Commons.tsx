@@ -7,7 +7,12 @@ export const Wrapper = styled.div`
   display: none;
   ${mobileBreakpoint()} {
     display: block;
-    height: 100%;
+    height: 60px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
   }
 `;
 
