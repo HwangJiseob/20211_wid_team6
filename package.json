@@ -1,7 +1,7 @@
 {
   "name": "20211_wid_team6",
   "version": "0.1.0",
-  "homepage": "https://hwangjiseob.github.io",
+  "homepage": "https://hwangjiseob.github.io/20211_wid_team6",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.2",
