@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css, useTheme } from "@emotion/react";
 
@@ -11,6 +11,7 @@ const { mobileBreakpoint, header } = layout;
 interface NavigatorProps {
   children: any;
   theme: string;
+  page: string;
 }
 
 const NavigatorList = styled("ul")<NavigatorProps>`
@@ -22,7 +23,8 @@ const NavigatorList = styled("ul")<NavigatorProps>`
   ${mobileBreakpoint()} {
     position: fixed;
     height: ${header.mobile_height};
-    display: grid;
+    display: ${(props: NavigatorProps) =>
+      props.page === "stores" ? "none" : "grid"};
     box-shadow: 0px 20px 80px -20px ${(props: NavigatorProps) => (props.theme === "light" ? "gray" : "gray")};
     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
     bottom: 0;
@@ -52,8 +54,12 @@ const navLink = css`
 
 const Navigator = () => {
   const { theme }: any = useTheme();
+  const location = useLocation();
+  const { pathname } = location;
+  const page = pathname.split("/")[1];
+  console.log(page);
   return (
-    <NavigatorList theme={theme}>
+    <NavigatorList theme={theme} page={page}>
       {items.map((item: PageInfo) => {
         const Icon = item.icon;
         return (
