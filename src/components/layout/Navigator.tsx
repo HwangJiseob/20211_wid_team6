@@ -18,8 +18,9 @@ const NavigatorList = styled("ul")<NavigatorProps>`
   all: unset;
   list-style: none;
   display: flex;
-  max-width: 600px;
   width: 100%;
+  max-width: 720px;
+  justify-content: space-around;
   ${mobileBreakpoint()} {
     position: fixed;
     height: ${header.mobile_height};
@@ -44,11 +45,21 @@ const navItem = css`
 const navLink = css`
   color: inherit;
   text-decoration: none;
-  font-size: 11px;
   width: 100%;
   height: 100%;
   display: grid;
   place-items: center;
+  font-size: 18px;
+  ${mobileBreakpoint()} {
+    font-size: 11px;
+  }
+`;
+
+const iconCSS = css`
+  display: none;
+  ${mobileBreakpoint()} {
+    display: initial;
+  }
 `;
 
 const Navigator = () => {
@@ -56,24 +67,25 @@ const Navigator = () => {
   const location = useLocation();
   const { pathname } = location;
   const page = pathname.split("/")[1];
+
+  const li = css`
+    .active {
+      color: ${theme === "light" ? "#black" : "white"};
+      ${mobileBreakpoint()} {
+        svg > path {
+          fill: ${theme === "light" ? "black" : "white"};
+        }
+      }
+    }
+    color: #515c6f;
+  `;
+
   return (
     <NavigatorList theme={theme} page={page}>
       {items.map((item: PageInfo) => {
         const Icon = item.icon;
         return (
-          <li
-            key={item.path}
-            css={css`
-              .active {
-                color: ${theme === "light" ? "#black" : "white"};
-                /* font-weight: bold; */
-                svg > path {
-                  fill: ${theme === "light" ? "black" : "white"};
-                }
-              }
-              color: #515c6f;
-            `}
-          >
+          <li key={item.path} css={li}>
             <NavLink
               to={item.path}
               css={navLink}
@@ -81,7 +93,7 @@ const Navigator = () => {
               activeClassName="active"
             >
               <div css={navItem}>
-                <Icon width={20} height={20} />
+                <Icon width={20} height={20} css={iconCSS} />
                 <div>{item.name}</div>
               </div>
             </NavLink>

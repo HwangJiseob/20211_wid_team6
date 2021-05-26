@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
+import { NavLink } from "react-router-dom";
 
 import { layout } from "@libs/config";
+import { home } from "@data/pages";
 import Navigator from "./Navigator";
 import MobileHeader from "./MobileHeader";
 
@@ -11,7 +13,9 @@ const Header = () => {
     <Wrapper>
       <Container>
         <MobileHeader />
-        <Logo>💐꽃과 케이크🎂</Logo>
+        <Logo>
+          <NavLink to={home.path}>💐꽃과 케이크🎂</NavLink>
+        </Logo>
         <Navigator />
       </Container>
     </Wrapper>
@@ -19,6 +23,16 @@ const Header = () => {
 };
 
 const Logo = styled.div`
+  margin: 10px 0 10px 0;
+  font-size: 36px;
+  font-weight: bold;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  :hover {
+    cursor: pointer;
+  }
   ${mobileBreakpoint()} {
     display: none;
   }
@@ -32,6 +46,9 @@ const Wrapper = styled.div`
   width: 100%;
   height: ${header.pc_height};
   z-index: 10;
+  ${mobileBreakpoint()} {
+    height: ${header.mobile_height};
+  }
 `;
 const Container = styled.div`
   display: block;

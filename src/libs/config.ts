@@ -2,7 +2,7 @@ export const layout: any = {
   mobileBreakpoint: (width: string) =>
     `@media screen and (max-width: ${width || "480px"})`,
   header: {
-    pc_height: "60px",
+    pc_height: "100px",
     mobile_height: "60px",
   },
   main: {

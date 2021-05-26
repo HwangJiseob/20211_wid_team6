@@ -19,7 +19,7 @@ const MobileHeader = () => {
     case "stores":
       return <StoreMobileHeader />;
     default:
-      return <>test</>;
+      return <div style={{ display: "none" }} />;
   }
 };
 
