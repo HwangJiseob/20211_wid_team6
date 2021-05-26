@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import { useHistory } from "react-router-dom";
 
 import { HeartSVG, CartSVG, SearchSVG } from "@assets";
 import IconButton from "@components/IconButton";
+import { wishlist } from "@data/pages";
 import { Wrapper } from "./Commons";
 
 const HomeHeader = () => {
+  const history = useHistory();
   const inputContainer = css`
     background: #b8c1d2;
     border-radius: 18px;
@@ -49,7 +52,7 @@ const HomeHeader = () => {
           <IconButton>
             <HeartSVG width="20px" height="20px" />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => history.push(wishlist.path)}>
             <CartSVG width="20px" height="20px" />
           </IconButton>
         </div>

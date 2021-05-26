@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
+import { useHistory } from "react-router-dom";
 
 import { layout } from "@libs/config";
 import {
@@ -12,16 +13,22 @@ import {
   ThirdScreen,
 } from "@components/pages/Store";
 import { CartSVG } from "@assets";
+import { wishlist } from "@data/pages";
 
 const { mobileBreakpoint } = layout;
 
 const Store = ({ store }: StoreProps) => {
   const { theme }: any = useTheme();
+  const history = useHistory();
   const [selected, setSelected] = React.useState("메뉴");
 
   return (
     <Wrapper>
-      <CartButton>
+      <CartButton
+        onClick={() => {
+          history.push(wishlist.path);
+        }}
+      >
         <CartSVG width={30} height={30} />
       </CartButton>
       <FirstScreen>

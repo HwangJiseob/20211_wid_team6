@@ -5,8 +5,18 @@ import NotFound from "./NotFound";
 import Reviews from "./Reviews";
 import Search from "./Search";
 import Florists from "./Florists";
+import Wishlist from "./Wishlist";
 
-export { Anniversaries, Home, MyPage, NotFound, Reviews, Search, Florists };
+export {
+  Anniversaries,
+  Home,
+  MyPage,
+  NotFound,
+  Reviews,
+  Search,
+  Florists,
+  Wishlist,
+};
 
 const pageComponents = {
   Anniversaries,
@@ -16,6 +26,7 @@ const pageComponents = {
   Reviews,
   Search,
   Florists,
+  Wishlist,
 };
 
 export default pageComponents;

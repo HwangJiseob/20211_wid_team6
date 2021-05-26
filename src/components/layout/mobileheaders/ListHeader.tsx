@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
+import { useHistory } from "react-router-dom";
 
 import {
   SearchSVG,
@@ -9,9 +10,12 @@ import {
   CartSVG,
   InvertedTriangle,
 } from "@assets";
+import IconButton from "@components/IconButton";
+import { wishlist } from "@data/pages";
 import { Wrapper, Container, LeftSide, Center, RightSide } from "./Commons";
 
 const ListMobileHeader = () => {
+  const history = useHistory();
   const [popup, setPopup] = React.useState(false);
   const { theme }: any = useTheme();
   return (
@@ -26,8 +30,16 @@ const ListMobileHeader = () => {
           <InvertedTriangle />
         </Center>
         <RightSide>
-          <HeartSVG width="20px" height="20px" />
-          <CartSVG width="20px" height="20px" />
+          <IconButton>
+            <HeartSVG width="20px" height="20px" />
+          </IconButton>
+          <IconButton
+            onClick={() => {
+              history.push(wishlist.path);
+            }}
+          >
+            <CartSVG width="20px" height="20px" />
+          </IconButton>
         </RightSide>
       </Container>
       {popup && (
