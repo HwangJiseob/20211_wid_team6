@@ -1,12 +1,12 @@
 import HomeMobileHeader from "./HomeHeader";
-import SearchMobileHeader from "./SearchHeader";
+import ListMobileHeader from "./ListHeader";
 import StoreMobileHeader from "./StoreHeader";
 
-export { HomeMobileHeader, SearchMobileHeader, StoreMobileHeader };
+export { HomeMobileHeader, ListMobileHeader, StoreMobileHeader };
 
 const mobileHeaders = {
   HomeMobileHeader,
-  SearchMobileHeader,
+  ListMobileHeader,
   StoreMobileHeader,
 };
 

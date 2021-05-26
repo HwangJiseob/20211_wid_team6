@@ -3,7 +3,7 @@ import React from "react";
 import { SearchSVG, MarkerSVG, HeartSVG, CartSVG } from "@assets";
 import { Wrapper, Container, LeftSide, Center, RightSide } from "./Commons";
 
-const SearchHeader = () => {
+const ListMobileHeader = () => {
   return (
     <Wrapper>
       <Container>
@@ -21,4 +21,4 @@ const SearchHeader = () => {
   );
 };
 
-export default SearchHeader;
+export default ListMobileHeader;

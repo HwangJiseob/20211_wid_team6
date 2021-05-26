@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import {
   HomeMobileHeader,
-  SearchMobileHeader,
+  ListMobileHeader,
   StoreMobileHeader,
 } from "@components/layout/mobileheaders";
 
@@ -15,7 +15,7 @@ const MobileHeader = () => {
     case "":
       return <HomeMobileHeader />;
     case "florists":
-      return <SearchMobileHeader />;
+      return <ListMobileHeader />;
     case "stores":
       return <StoreMobileHeader />;
     default:
