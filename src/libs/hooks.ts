@@ -13,9 +13,12 @@ export const switchTheme = ({ theme, setTheme }: ThemeProps) => {
   }, [theme, setTheme]);
 };
 
+export const AppContext = React.createContext({});
+
 const hooks = {
   preventTransition,
   switchTheme,
+  AppContext,
 };
 
 export default hooks;

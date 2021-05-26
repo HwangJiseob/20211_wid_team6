@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 
 import { FilterSVG, HeartSVG } from "@assets";
-
 import { bakeries } from "@data/stores";
+import { AppContext } from "@libs/hooks";
 
-const Search = () => {
+const Florists = () => {
+  const { location }: any = React.useContext(AppContext);
+  const stores = bakeries.filter((bakery) => bakery.location.name === location);
   return (
     <div>
       <Carousel>carousel</Carousel>
@@ -19,7 +21,7 @@ const Search = () => {
         </div>
       </MidLine>
       <Cards>
-        {bakeries.map((store: Store) => (
+        {stores.map((store: Store) => (
           <Card key={store.id} store={store} />
         ))}
       </Cards>
@@ -85,4 +87,4 @@ const MidLine = styled.div`
   margin: 0 0 10px 0;
 `;
 
-export default Search;
+export default Florists;

@@ -6,6 +6,11 @@ declare interface ReactProps {
   children?: React.ReactNode;
 }
 
+declare interface AppContextData {
+  location: string;
+  setLocation: React.Dispatch<React.SetStateAction<string>>;
+}
+
 declare interface EmotionGlobalProps {
   theme: string;
 }
@@ -35,6 +40,10 @@ declare interface Store {
   address: string;
   hour: [string, string];
   sector: "bakery" | "florist";
+  location: {
+    name: string;
+    path: string;
+  };
 }
 
 declare interface StoreProps {

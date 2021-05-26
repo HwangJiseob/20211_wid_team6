@@ -12,12 +12,20 @@ import {
 } from "@assets";
 import IconButton from "@components/IconButton";
 import { wishlist } from "@data/pages";
+import { AppContext } from "@libs/hooks";
 import { Wrapper, Container, LeftSide, Center, RightSide } from "./Commons";
 
 const ListMobileHeader = () => {
+  const { location, setLocation }: any = React.useContext(AppContext);
   const history = useHistory();
   const [popup, setPopup] = React.useState(false);
   const { theme }: any = useTheme();
+
+  const click = (standard: string) => {
+    setLocation(standard);
+    setPopup(false);
+  };
+
   return (
     <Wrapper>
       <Container>
@@ -26,7 +34,7 @@ const ListMobileHeader = () => {
           <MarkerSVG width="20px" height="20px" />
         </LeftSide>
         <Center onClick={() => setPopup(!popup)}>
-          신촌
+          {location}
           <InvertedTriangle />
         </Center>
         <RightSide>
@@ -51,8 +59,20 @@ const ListMobileHeader = () => {
               <PopupHeader>내 주변</PopupHeader>
             </PopupHeaders>
             <PopupRow>
-              <LocationButton>신촌</LocationButton>
-              <LocationButton>홍대</LocationButton>
+              <LocationButton
+                location={location}
+                standard="신촌"
+                onClick={() => click("신촌")}
+              >
+                신촌
+              </LocationButton>
+              <LocationButton
+                location={location}
+                standard="홍대"
+                onClick={() => click("홍대")}
+              >
+                홍대
+              </LocationButton>
             </PopupRow>
           </PopupContainer>
         </PopupWrapper>
@@ -113,10 +133,20 @@ const PopupRow = styled.div`
   gap: 10px;
 `;
 
-const LocationButton = styled.button`
+interface LocationButtonProps {
+  children?: any;
+  location?: string;
+  standard?: string;
+}
+
+const LocationButton = styled.button<LocationButtonProps>`
   all: unset;
-  color: #b4b4b4;
-  border: 1px solid #b4b4b4;
+  ${(props: LocationButtonProps) => {
+    return `border: 1px solid ${
+      props.location === props.standard ? "blue" : "#b4b4b4"
+    };
+    color: ${props.location === props.standard ? "blue" : "#b4b4b4"};`;
+  }}
   border-radius: 10px;
   height: 48px;
   width: 100%;
