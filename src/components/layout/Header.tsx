@@ -31,9 +31,9 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: ${header.pc_height};
+  z-index: 10;
 `;
 const Container = styled.div`
-  /* display: flex; */
   display: block;
   justify-content: space-between;
   width: 100%;

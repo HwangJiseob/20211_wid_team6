@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { useTheme } from "@emotion/react";
+import { useTheme, keyframes } from "@emotion/react";
 import { useHistory } from "react-router-dom";
 
 import {
@@ -15,25 +15,65 @@ import { wishlist } from "@data/pages";
 import { AppContext } from "@libs/hooks";
 import { Wrapper, Container, LeftSide, Center, RightSide } from "./Commons";
 
+const showupAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 70%;
+  }
+`;
+
+const removeAnimation = keyframes`
+  from {
+  }
+  to {
+    opacity: 0;
+  }
+`;
+
+const moveDownAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translate(0, -100%)
+  }
+  to {
+    opacity: 100;
+  }
+`;
+
 const ListMobileHeader = () => {
   const { location, setLocation }: any = React.useContext(AppContext);
   const history = useHistory();
   const [popup, setPopup] = React.useState(false);
   const { theme }: any = useTheme();
+  const [clicked, setClicked] = React.useState(false);
 
-  const click = (standard: string) => {
+  const clickLocation = (standard: string) => {
     setLocation(standard);
-    setPopup(false);
+  };
+
+  const showPopup = () => {
+    setClicked(true);
+    setPopup(true);
+  };
+
+  const removePopup = () => {
+    setClicked(false);
+    setTimeout(() => {
+      setPopup(false);
+    }, 450);
   };
 
   return (
     <Wrapper>
+      <Background theme={theme} />
       <Container>
         <LeftSide>
           <SearchSVG width="20px" height="20px" />
           <MarkerSVG width="20px" height="20px" />
         </LeftSide>
-        <Center onClick={() => setPopup(!popup)}>
+        <Center onClick={showPopup}>
           {location}
           <InvertedTriangle />
         </Center>
@@ -50,33 +90,36 @@ const ListMobileHeader = () => {
           </IconButton>
         </RightSide>
       </Container>
-      {popup && (
-        <PopupWrapper>
-          <PopupBackground theme={theme} />
-          <PopupContainer theme={theme}>
-            <PopupHeaders>
-              <PopupHeader>즐겨찾기</PopupHeader>
-              <PopupHeader>내 주변</PopupHeader>
-            </PopupHeaders>
-            <PopupRow>
-              <LocationButton
-                location={location}
-                standard="신촌"
-                onClick={() => click("신촌")}
-              >
-                신촌
-              </LocationButton>
-              <LocationButton
-                location={location}
-                standard="홍대"
-                onClick={() => click("홍대")}
-              >
-                홍대
-              </LocationButton>
-            </PopupRow>
-          </PopupContainer>
-        </PopupWrapper>
-      )}
+      <PopupWrapper popup={popup}>
+        <PopupBackground
+          clicked={clicked}
+          theme={theme}
+          popup={popup}
+          onClick={removePopup}
+        />
+        <PopupContainer clicked={clicked} theme={theme} onClick={removePopup}>
+          <PopupHeaders>
+            <PopupHeader>즐겨찾기</PopupHeader>
+            <PopupHeader>내 주변</PopupHeader>
+          </PopupHeaders>
+          <PopupRow>
+            <LocationButton
+              location={location}
+              standard="신촌"
+              onClick={() => clickLocation("신촌")}
+            >
+              신촌
+            </LocationButton>
+            <LocationButton
+              location={location}
+              standard="홍대"
+              onClick={() => clickLocation("홍대")}
+            >
+              홍대
+            </LocationButton>
+          </PopupRow>
+        </PopupContainer>
+      </PopupWrapper>
     </Wrapper>
   );
 };
@@ -85,26 +128,46 @@ interface PopupProps {
   children?: any;
   popup?: boolean;
   theme?: any;
+  clicked?: boolean;
 }
 
-const PopupWrapper = styled.div`
+const Background = styled.div<PopupProps>`
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  left: 0;
+  background: ${(props: PopupProps) =>
+    props.theme === "light" ? "#fff" : "#181818"};
+  z-index: -10;
+`;
+
+const PopupWrapper = styled.div<PopupProps>`
+  display: ${(props: PopupProps) => (props.popup ? "flex" : "none")};
   flex-direction: column;
   position: fixed;
   width: 100%;
   height: calc(100vh - 120px);
   left: 0;
+  z-index: -20;
 `;
 
 const PopupBackground = styled.div<PopupProps>`
+  animation: ${(props: PopupProps) =>
+    props.clicked ? showupAnimation : removeAnimation};
+  animation-duration: 0.5s;
   position: absolute;
   width: 100%;
   height: 100%;
   background: ${(props: PopupProps) =>
     props.theme === "light" ? "#fff" : "#181818"};
   opacity: 70%;
+  z-index: -20;
 `;
 
 const PopupContainer = styled.div<PopupProps>`
+  animation: ${(props: PopupProps) =>
+    props.clicked ? moveDownAnimation : removeAnimation};
+  animation-duration: 0.5s;
   position: absolute;
   box-sizing: border-box;
   padding: 10px 10px 0 10px;
@@ -112,6 +175,8 @@ const PopupContainer = styled.div<PopupProps>`
   height: 50vh;
   background: ${(props: PopupProps) =>
     props.theme === "light" ? "#fff" : "#181818"};
+  transition-duration: 0.5s;
+  z-index: -10;
 `;
 
 const PopupHeaders = styled.div`

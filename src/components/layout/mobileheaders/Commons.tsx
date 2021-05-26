@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
     box-sizing: border-box;
     top: 0;
     left: 0;
-    z-index: 10;
   }
 `;
 
@@ -24,6 +23,7 @@ export const Container = styled.div`
   grid-template-columns: 50px auto 50px;
   place-items: center;
   gap: 5px;
+  z-index: 10;
 `;
 
 export const Center = styled.div`
