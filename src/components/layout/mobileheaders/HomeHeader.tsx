@@ -30,6 +30,7 @@ const HomeHeader = () => {
   `;
   const rightSide = css`
     width: 100%;
+    margin: 4px 0 0 0; // 불균형 해소
     display: flex;
     justify-content: space-evenly;
   `;

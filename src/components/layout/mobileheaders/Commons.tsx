@@ -10,6 +10,8 @@ export const Wrapper = styled.div`
     height: 60px;
     position: absolute;
     width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
     top: 0;
     left: 0;
     z-index: 10;
