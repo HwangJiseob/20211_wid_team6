@@ -43,7 +43,9 @@ const Store = ({ store }: StoreProps) => {
 };
 
 const Wrapper = styled.div`
+  margin: 20px 0 0 0;
   ${mobileBreakpoint()} {
+    margin: 0;
     position: absolute;
     top: 0;
     left: 0;
