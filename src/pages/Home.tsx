@@ -51,6 +51,7 @@ const Section1 = styled.section`
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 50px;
   ${mobileBreakpoint()} {
+    grid-template-columns: 1fr;
     width: 100%;
     height: 90%;
     display: grid;
