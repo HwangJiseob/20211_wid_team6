@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css, useTheme } from "@emotion/react";
 
@@ -37,7 +37,6 @@ const NavigatorList = styled("ul")<NavigatorProps>`
 
 const navItem = css`
   display: block;
-  color: #515c6f;
   font-weight: bold;
   text-align: center;
 `;
@@ -62,13 +61,30 @@ const Navigator = () => {
       {items.map((item: PageInfo) => {
         const Icon = item.icon;
         return (
-          <li key={item.path}>
-            <Link to={item.path} css={navLink}>
+          <li
+            key={item.path}
+            css={css`
+              .active {
+                color: ${theme === "light" ? "#black" : "white"};
+                /* font-weight: bold; */
+                svg > path {
+                  fill: ${theme === "light" ? "black" : "white"};
+                }
+              }
+              color: #515c6f;
+            `}
+          >
+            <NavLink
+              to={item.path}
+              css={navLink}
+              exact
+              activeClassName="active"
+            >
               <div css={navItem}>
                 <Icon width={20} height={20} />
                 <div>{item.name}</div>
               </div>
-            </Link>
+            </NavLink>
           </li>
         );
       })}
