@@ -54,7 +54,7 @@ const Items = styled.div`
     display: grid;
     place-items: center;
   }
-  li:nth-child(2) {
+  li:nth-of-type(1) {
     border-top: initial;
   }
 `;
