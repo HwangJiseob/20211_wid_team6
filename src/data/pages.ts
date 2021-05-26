@@ -1,14 +1,22 @@
 import {
   Anniversaries,
   Home,
+  Map,
+  Florists,
   MyPage,
   Reviews,
   Search,
-  Florists,
   Wishlist,
 } from "@pages";
 
-import { ManSVG, HomeSVG, ChatSVG, FilesSVG, SearchSVG } from "@assets";
+import {
+  ManSVG,
+  HomeSVG,
+  ChatSVG,
+  FilesSVG,
+  SearchSVG,
+  MarkerSVG,
+} from "@assets";
 
 export const anniversaries = {
   name: "기념일",
@@ -22,6 +30,13 @@ export const home = {
   title: "💐꽃과 케이크🎂",
   path: "/",
   icon: HomeSVG,
+};
+
+export const map = {
+  name: "지도검색",
+  title: "지도검색",
+  path: "/map",
+  icon: MarkerSVG,
 };
 
 export const mypage = {
@@ -95,6 +110,10 @@ const pages: Array<PageRouteInfo> = [
   {
     ...florists,
     component: Florists,
+  },
+  {
+    ...map,
+    component: Map,
   },
 ];
 

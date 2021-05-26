@@ -11,7 +11,7 @@ import {
   InvertedTriangle,
 } from "@assets";
 import IconButton from "@components/IconButton";
-import { wishlist } from "@data/pages";
+import { wishlist, map } from "@data/pages";
 import { AppContext } from "@libs/hooks";
 import { Wrapper, Container, LeftSide, Center, RightSide } from "./Commons";
 
@@ -71,7 +71,13 @@ const ListMobileHeader = () => {
       <Container>
         <LeftSide>
           <SearchSVG width="20px" height="20px" />
-          <MarkerSVG width="20px" height="20px" />
+          <IconButton
+            onClick={() => {
+              history.push(map.path);
+            }}
+          >
+            <MarkerSVG width="20px" height="20px" />
+          </IconButton>
         </LeftSide>
         <Center onClick={showPopup}>
           {location}
