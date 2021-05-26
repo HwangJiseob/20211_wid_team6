@@ -6,6 +6,7 @@ import { ReactComponent as FilterSVG } from "./filter.svg";
 import { ReactComponent as HeadphoneSVG } from "./headphone.svg";
 import { ReactComponent as HeartSVG } from "./heart.svg";
 import { ReactComponent as HomeSVG } from "./home.svg";
+import { ReactComponent as InvertedTriangle } from "./invertedTriangle.svg";
 import { ReactComponent as LinkCopySVG } from "./linkCopy.svg";
 import { ReactComponent as ManSVG } from "./man.svg";
 import { ReactComponent as MarkerSVG } from "./marker.svg";
@@ -20,6 +21,7 @@ export {
   FilesSVG,
   FilterSVG,
   HomeSVG,
+  InvertedTriangle,
   LinkCopySVG,
   HeadphoneSVG,
   HeartSVG,
@@ -37,6 +39,7 @@ export default {
   FilesSVG,
   FilterSVG,
   HomeSVG,
+  InvertedTriangle,
   LinkCopySVG,
   HeadphoneSVG,
   HeartSVG,
