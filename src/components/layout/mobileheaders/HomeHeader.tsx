@@ -33,7 +33,11 @@ const HomeHeader = () => {
   `;
   const rightSide = css`
     width: 100%;
-    margin: 4px 0 0 0; // 불균형 해소
+    /*
+      don't know why there are difference with y-location
+      between HomeHeader and List Header (Container  component in './Common.tsx' )
+     */
+    /* margin: 4px 0 0 0; // resolve unbalance */
     display: flex;
     justify-content: space-evenly;
   `;
