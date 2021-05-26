@@ -14,7 +14,7 @@ const MobileHeader = () => {
   switch (standard) {
     case "":
       return <HomeMobileHeader />;
-    case "search":
+    case "florists":
       return <SearchMobileHeader />;
     case "stores":
       return <StoreMobileHeader />;

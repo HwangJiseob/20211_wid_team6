@@ -1,4 +1,4 @@
-import { Anniversaries, Home, MyPage, Reviews, Search } from "@pages";
+import { Anniversaries, Home, MyPage, Reviews, Search, Florists } from "@pages";
 
 import { ManSVG, HomeSVG, ChatSVG, FilesSVG, SearchSVG } from "@assets";
 
@@ -37,6 +37,13 @@ export const search = {
   icon: SearchSVG,
 };
 
+export const florists = {
+  name: "꽃집목록",
+  path: "/florists",
+  title: "꽃집 목록",
+  icon: SearchSVG, // 임시
+};
+
 export const items: Array<PageInfo> = [
   home,
   search,
@@ -65,6 +72,10 @@ const pages: Array<PageRouteInfo> = [
   {
     ...search,
     component: Search,
+  },
+  {
+    ...florists,
+    component: Florists,
   },
 ];
 

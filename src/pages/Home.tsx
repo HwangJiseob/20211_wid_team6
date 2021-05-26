@@ -1,11 +1,15 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
+  const history = useHistory();
   return (
     <Container>
       <Section1>
-        <BannerButton>꽃</BannerButton>
+        <BannerButton onClick={() => history.push("/florists")}>
+          꽃
+        </BannerButton>
         <BannerButton>케이크</BannerButton>
       </Section1>
     </Container>
@@ -26,7 +30,8 @@ const Section1 = styled.section`
   gap: 50px;
 `;
 
-const BannerButton = styled.div`
+const BannerButton = styled.button`
+  all: unset;
   display: grid;
   place-items: center;
   width: 100%;
