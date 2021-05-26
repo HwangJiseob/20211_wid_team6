@@ -3,9 +3,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
 import { HeadphoneSVG, HeartSVG, ReviewSVG } from "@assets";
-import { layout } from "@libs/config";
-
-const { mobileBreakpoint } = layout;
+import { defaultBreakpoint } from "@libs/config";
 
 interface IntroductionProps {
   children?: ReactProps;
@@ -85,7 +83,7 @@ const IntroductionWrapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   place-items: center;
   margin: 20px 0 0 0;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     grid-template-columns: initial;
     margin: 0;
   }

@@ -14,8 +14,11 @@ export const layout: any = {
   },
 };
 
+export const defaultBreakpoint: string = layout.mobileBreakpoint("480px");
+
 const config: any = {
   layout,
+  defaultBreakpoint,
 };
 
 export default config;

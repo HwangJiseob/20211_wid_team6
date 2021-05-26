@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import { layout } from "@libs/config";
+import { defaultBreakpoint } from "@libs/config";
 import Screen from "./Screen";
-
-const { mobileBreakpoint } = layout;
 
 const ThirdScreen = () => {
   const items = [1, 2, 3, 4, 5, 6, 7];
@@ -23,7 +21,7 @@ const ThirdScreen = () => {
 };
 
 const Wrapper = styled(Screen)`
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     min-height: 100vh;
   }
 `;
@@ -71,7 +69,7 @@ const Title = styled.h2`
 //   display: flex;
 //   flex-direction: column;
 //   padding: 0 10px;
-//   ${mobileBreakpoint()} {
+//   ${defaultBreakpoint} {
 //   }
 // `;
 

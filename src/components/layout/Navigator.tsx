@@ -3,10 +3,10 @@ import { NavLink, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css, useTheme } from "@emotion/react";
 
-import { layout } from "@libs/config";
+import { layout, defaultBreakpoint } from "@libs/config";
 import { items } from "@data/pages";
 
-const { mobileBreakpoint, header } = layout;
+const { header } = layout;
 
 interface NavigatorProps {
   children: any;
@@ -21,7 +21,7 @@ const NavigatorList = styled("ul")<NavigatorProps>`
   width: 100%;
   max-width: 720px;
   justify-content: space-around;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     position: fixed;
     height: ${header.mobile_height};
     display: ${(props: NavigatorProps) =>
@@ -50,14 +50,14 @@ const navLink = css`
   display: grid;
   place-items: center;
   font-size: 18px;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     font-size: 11px;
   }
 `;
 
 const iconCSS = css`
   display: none;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     display: initial;
   }
 `;
@@ -71,7 +71,7 @@ const Navigator = () => {
   const li = css`
     .active {
       color: ${theme === "light" ? "#black" : "white"};
-      ${mobileBreakpoint()} {
+      ${defaultBreakpoint} {
         svg > path {
           fill: ${theme === "light" ? "black" : "white"};
         }

@@ -2,9 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
-import { layout } from "@libs/config";
-
-const { mobileBreakpoint } = layout;
+import { defaultBreakpoint } from "@libs/config";
 
 const Carousel = () => {
   const images = ["1", "2", "3"];
@@ -35,7 +33,7 @@ const Wrapper = styled.div`
   align-items: flex-end;
   justify-content: center;
   height: 33vh;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     height: 240px;
   }
 `;
@@ -47,7 +45,7 @@ const Buttons = styled.ul`
   margin-bottom: 0;
   transform: translate(0, -100%);
   width: 240px;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     position: absolute;
     top: 200px;
     left: 50%;

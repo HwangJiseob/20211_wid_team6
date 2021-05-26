@@ -4,9 +4,7 @@ import styled from "@emotion/styled";
 import { useHistory } from "react-router-dom";
 
 import { switchTheme } from "@libs/hooks";
-import { layout } from "@libs/config";
-
-const { mobileBreakpoint } = layout;
+import { defaultBreakpoint } from "@libs/config";
 
 const MyPage = () => {
   const { theme, setTheme }: any = useTheme();
@@ -48,7 +46,7 @@ const Profile = styled.div`
   display: grid;
   place-items: center;
 
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     margin: 0 0 30px 0;
   }
 `;

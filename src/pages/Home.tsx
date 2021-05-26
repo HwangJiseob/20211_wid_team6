@@ -2,9 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { useHistory } from "react-router-dom";
 
-import { layout } from "@libs/config";
-
-const { mobileBreakpoint } = layout;
+import { defaultBreakpoint } from "@libs/config";
 
 const Home = () => {
   const history = useHistory();
@@ -32,7 +30,7 @@ const Container = styled.div`
     ---------------------------------------
     = 150px
   */
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     height: calc(100vh - 150px);
     /*
       + 60px for header.mobile_height
@@ -50,7 +48,7 @@ const Section1 = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 50px;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     grid-template-columns: 1fr;
     width: 100%;
     height: 90%;

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import { layout } from "@libs/config";
+import { layout, defaultBreakpoint } from "@libs/config";
 
-const { header, mobileBreakpoint } = layout;
+const { header } = layout;
 
 interface MenuProps {
   children?: any;
@@ -45,7 +45,7 @@ const Wrapper = styled.div<WrapperProps>`
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
   z-index: 10;
-  ${mobileBreakpoint} {
+  ${defaultBreakpoint} {
     box-shadow: 0px -20px 40px -25px
       ${(props: WrapperProps) => (props.theme === "light" ? "gray" : "gray")};
   }

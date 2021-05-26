@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import { layout } from "@libs/config";
+import { layout, defaultBreakpoint } from "@libs/config";
 import Screen from "./Screen";
 
-const { mobileBreakpoint, header } = layout;
+const { header } = layout;
 
 const SecondScreen = () => {
   const items = [1, 2, 3, 4];
@@ -29,7 +29,7 @@ const SecondScreen = () => {
 
 const Wrapper = styled(Screen)`
   margin: 20px 0 0 0;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     margin: 0;
     ${`height: calc(100vh - ${header.mobile_height})`}
   }
@@ -57,7 +57,7 @@ const Contents = styled.div`
   /* height: 300px; */
   border-radius: 10px;
   background: #707070;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     display: grid;
     grid-template-rows: 72px auto;
     height: 90%;
@@ -72,7 +72,7 @@ const Items = styled.ul`
   gap: 10px;
   place-items: center;
   margin: 20px 0;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     margin: 0;
@@ -86,7 +86,7 @@ const ExampleImage = styled.div`
   background: #e3f2ff;
 
   /* display: none; */
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     height: 120px;
     width: 100%;
   }
@@ -95,7 +95,7 @@ const ExampleImage = styled.div`
 const Item = styled.li`
   all: unset;
   width: 80%;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     width: 100%;
   }
 `;

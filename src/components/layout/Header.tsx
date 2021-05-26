@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
 
-import { layout } from "@libs/config";
+import { layout, defaultBreakpoint } from "@libs/config";
 import { home } from "@data/pages";
 import Navigator from "./Navigator";
 import MobileHeader from "./MobileHeader";
 
-const { main, header, mobileBreakpoint } = layout;
+const { main, header } = layout;
 
 const Header = () => {
   return (
@@ -33,7 +33,7 @@ const Logo = styled.div`
   :hover {
     cursor: pointer;
   }
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     display: none;
   }
 `;
@@ -46,7 +46,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: ${header.pc_height};
   z-index: 10;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     height: ${header.mobile_height};
   }
 `;

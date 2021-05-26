@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import { useHistory } from "react-router-dom";
 
-import { layout } from "@libs/config";
+import { defaultBreakpoint } from "@libs/config";
 import {
   Carousel,
   Menu,
@@ -14,8 +14,6 @@ import {
 } from "@components/pages/Store";
 import { CartSVG } from "@assets";
 import { wishlist } from "@data/pages";
-
-const { mobileBreakpoint } = layout;
 
 const Store = ({ store }: StoreProps) => {
   const { theme }: any = useTheme();
@@ -44,7 +42,7 @@ const Store = ({ store }: StoreProps) => {
 
 const Wrapper = styled.div`
   margin: 20px 0 0 0;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     margin: 0;
     position: absolute;
     top: 0;
@@ -54,7 +52,7 @@ const Wrapper = styled.div`
 `;
 
 const FirstScreen = styled(Screen)`
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     height: 100vh;
   }
 `;

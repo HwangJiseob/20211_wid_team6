@@ -6,9 +6,7 @@ import { css } from "@emotion/react";
 import { FilterSVG, HeartSVG } from "@assets";
 import { bakeries } from "@data/stores";
 import { AppContext } from "@libs/hooks";
-import { layout } from "@libs/config";
-
-const { mobileBreakpoint } = layout;
+import { defaultBreakpoint } from "@libs/config";
 
 const Florists = () => {
   const { location }: any = React.useContext(AppContext);
@@ -82,7 +80,7 @@ const Carousel = styled.div`
   background: #e6afc0;
   border-radius: 10px;
   margin: 10px 0 10px 0;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     height: 150px;
     margin: 0 0 10px 0;
   }

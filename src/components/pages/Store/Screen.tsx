@@ -1,11 +1,9 @@
 import styled from "@emotion/styled";
 
-import { layout } from "@libs/config";
-
-const { mobileBreakpoint } = layout;
+import { defaultBreakpoint } from "@libs/config";
 
 const Screen = styled.div`
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     display: flex;
     flex-direction: column;
     justify-content: space-between;

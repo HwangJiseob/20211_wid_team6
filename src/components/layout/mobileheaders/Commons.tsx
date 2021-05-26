@@ -1,11 +1,9 @@
 import styled from "@emotion/styled";
-import { layout } from "@libs/config";
-
-const { mobileBreakpoint } = layout;
+import { defaultBreakpoint } from "@libs/config";
 
 export const Wrapper = styled.div`
   display: none;
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     display: block;
     height: 60px;
     position: absolute;

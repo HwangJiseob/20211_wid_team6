@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
-import { layout } from "@libs/config";
+import { layout, defaultBreakpoint } from "@libs/config";
 
-const { main, footer, mobileBreakpoint } = layout;
+const { main, footer } = layout;
 
 const Footer = () => {
   return (
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   min-height: ${footer.pc_height};
   background: ${"gray"};
   color: ${"white"};
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     background: inherit;
     min-height: 60px;
   }
@@ -35,7 +35,7 @@ const Container = styled.div`
   padding-top: 10px;
   max-width: ${main.max_width};
   text-align: center; // 임시
-  ${mobileBreakpoint()} {
+  ${defaultBreakpoint} {
     display: none;
   }
 `;
