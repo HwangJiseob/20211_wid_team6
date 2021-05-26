@@ -10,7 +10,9 @@
       content="Web site created using create-react-app"
     />
     <script>
-      window.__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () {}
+      if(window.__REACT_DEVTOOLS_GLOBAL_HOOK__){
+        window.__REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function () {}
+      }
     </script>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
