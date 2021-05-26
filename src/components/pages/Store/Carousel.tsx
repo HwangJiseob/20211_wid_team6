@@ -9,27 +9,8 @@ const { mobileBreakpoint } = layout;
 const Carousel = () => {
   const images = ["1", "2", "3"];
 
-  const Buttons = styled.ul`
-    all: unset;
-    ${mobileBreakpoint()} {
-      position: absolute;
-      top: 200px;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 50%;
-      display: flex;
-      justify-content: space-evenly;
-    }
-  `;
-
   return (
-    <div
-      css={css`
-        appearance: slider-horizontal;
-        background: #faf8d0;
-        height: 240px;
-      `}
-    >
+    <Wrapper>
       <Buttons>
         {images.map((image) => (
           <div
@@ -43,8 +24,37 @@ const Carousel = () => {
           />
         ))}
       </Buttons>
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  appearance: slider-horizontal;
+  background: #faf8d0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 33vh;
+  ${mobileBreakpoint()} {
+    height: 240px;
+  }
+`;
+
+const Buttons = styled.ul`
+  all: unset;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 0;
+  transform: translate(0, -100%);
+  width: 240px;
+  ${mobileBreakpoint()} {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -50%);
+    width: 50%;
+  }
+`;
 
 export default Carousel;

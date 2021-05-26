@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 import { layout } from "@libs/config";
 
-const { header } = layout;
+const { header, mobileBreakpoint } = layout;
 
 interface MenuProps {
   children?: any;
@@ -44,9 +44,11 @@ const Wrapper = styled.div<WrapperProps>`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
-  box-shadow: 0px -20px 40px -25px
-    ${(props: WrapperProps) => (props.theme === "light" ? "gray" : "gray")};
   z-index: 10;
+  ${mobileBreakpoint} {
+    box-shadow: 0px -20px 40px -25px
+      ${(props: WrapperProps) => (props.theme === "light" ? "gray" : "gray")};
+  }
 `;
 
 const Button = styled.button`

@@ -3,6 +3,9 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
 import { HeadphoneSVG, HeartSVG, ReviewSVG } from "@assets";
+import { layout } from "@libs/config";
+
+const { mobileBreakpoint } = layout;
 
 interface IntroductionProps {
   children?: ReactProps;
@@ -14,7 +17,6 @@ const option = css`
 `;
 const info = css`
   display: flex;
-  width: 90%;
   justify-content: space-between;
 `;
 const more = css`
@@ -22,7 +24,7 @@ const more = css`
   width: 90%;
   color: #838383;
   display: flex;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
 `;
 
 const Introduction = ({ store }: IntroductionProps) => {
@@ -61,34 +63,47 @@ const Introduction = ({ store }: IntroductionProps) => {
           </li>
         </ul>
       </CardWrapper>
-      <div css={info}>
-        <div>주소</div>
-        <div>{store.address}</div>
-      </div>
-      <div css={info}>
-        <div>영업시간</div>
-        <div>{`${open} - ${close}`}</div>
-      </div>
-      <div css={more}>
-        <div>정보 더보기</div>
-      </div>
+      <Others>
+        <div css={info}>
+          <div>주소</div>
+          <div>{store.address}</div>
+        </div>
+        <div css={info}>
+          <div>영업시간</div>
+          <div>{`${open} - ${close}`}</div>
+        </div>
+        <div css={more}>
+          <div>정보 더보기</div>
+        </div>
+      </Others>
     </IntroductionWrapper>
   );
 };
 
 const IntroductionWrapper = styled.div`
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   place-items: center;
+  margin: 20px 0 0 0;
+  ${mobileBreakpoint()} {
+    grid-template-columns: initial;
+    margin: 0;
+  }
 `;
 
 const CardWrapper = styled.div`
   display: grid;
   place-items: center;
   width: 90%;
+  max-width: 480px;
   height: 120px;
   border-radius: 10px;
   border: 1px solid black;
   margin: 0 0 20px 0;
+`;
+
+const Others = styled.div`
+  width: 90%;
 `;
 
 export default Introduction;
