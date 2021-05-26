@@ -13,6 +13,7 @@ import {
 import IconButton from "@components/IconButton";
 import { wishlist, map } from "@data/pages";
 import { AppContext } from "@libs/hooks";
+import { switchScrollAvailable } from "@libs/functions";
 import { Wrapper, Container, LeftSide, Center, RightSide } from "./Commons";
 
 const showupAnimation = keyframes`
@@ -55,11 +56,13 @@ const ListMobileHeader = () => {
 
   const showPopup = () => {
     setClicked(true);
+    switchScrollAvailable();
     setPopup(true);
   };
 
   const removePopup = () => {
     setClicked(false);
+    switchScrollAvailable();
     setTimeout(() => {
       setPopup(false);
     }, 450);
