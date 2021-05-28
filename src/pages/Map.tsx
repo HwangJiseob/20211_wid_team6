@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { showPopupCallback, AppContext } from "@libs/hooks";
 import { KakaoMap } from "@libs/KakaoMap";
 import { defaultBreakpoint } from "@libs/config";
-import { SearchSVG, ArrowRightSVG } from "@assets";
+import { SearchSVG, ArrowRightSVG, InvertedTriangle } from "@assets";
 import IconButton from "@components/IconButton";
 import { LocationsPopup } from "@components/popups";
 import { bakeries } from "@data/stores";
@@ -158,7 +158,10 @@ const HeaderPart = () => {
       </HighZIndex>
       <LocationSearch>
         <IconButton onClick={showPopup}>
-          <LeftSide>{location.name}</LeftSide>
+          <LeftSide>
+            {location.name}
+            <InvertedTriangle />
+          </LeftSide>
         </IconButton>
         <RightSide>
           <IconButton>
@@ -199,6 +202,7 @@ const LocationSearch = styled.div`
 const LeftSide = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   font-size: 20px;
   font-weight: bold;
 `;
@@ -244,7 +248,7 @@ const Curtain = styled(MapRenderer)<CurtainProps>`
   width: 100%;
   position: fixed;
   background: ${(props: CurtainProps) =>
-    props.theme === "light" ? "#fff" : "#181818"};
+    props.theme === "light" ? "#E3F2FF" : "#181818"};
   z-index: 400;
 `;
 
