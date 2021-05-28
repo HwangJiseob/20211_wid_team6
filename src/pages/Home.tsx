@@ -28,7 +28,7 @@ const Container = styled.div`
     + 150px for footer.pc_height
     +  25px for margins and paddings
     ---------------------------------------
-    = 150px
+    = 275px
   */
   ${defaultBreakpoint} {
     height: calc(100vh - 150px);
