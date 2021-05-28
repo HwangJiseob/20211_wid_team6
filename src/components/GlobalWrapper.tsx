@@ -5,6 +5,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 import { findPreferColor } from "@libs/functions";
 import { AppContext } from "@libs/hooks";
+import { sinchon } from "@data/locations";
 import {
   Wrapper as LayoutWrapper,
   Header,
@@ -21,7 +22,7 @@ const GlobalWrapper = ({ children }: ReactProps) => {
     setTheme,
   };
 
-  const [location, setLocation] = React.useState("신촌");
+  const [location, setLocation] = React.useState(sinchon);
 
   const appProps: AppContextData = {
     location,

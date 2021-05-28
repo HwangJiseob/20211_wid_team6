@@ -10,7 +10,11 @@ import { defaultBreakpoint } from "@libs/config";
 
 const Florists = () => {
   const { location }: any = React.useContext(AppContext);
-  const stores = bakeries.filter((bakery) => bakery.location.name === location);
+  console.log(location);
+  // const stores = bakeries.filter(
+  //   (bakery) => bakery.location.name === location.name,
+  // );
+  const stores = bakeries;
   return (
     <div>
       <Carousel>carousel</Carousel>

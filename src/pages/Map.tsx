@@ -8,19 +8,18 @@ import { defaultBreakpoint } from "@libs/config";
 const { kakao }: any = window;
 
 const id = "navermaps";
-const options = {
-  // 지도를 생성할 때 필요한 기본 옵션
-  center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표.
-  level: 5, // 지도의 레벨(확대, 축소 정도)
-};
 
 const Map = () => {
-  const app = React.useContext(AppContext);
-  console.log(app);
+  const { location }: any = React.useContext(AppContext);
+  const [lat, lng] = location.latlng;
+  const options = {
+    center: new kakao.maps.LatLng(lat, lng),
+    level: 5,
+  };
 
   React.useEffect(() => {
     const kakaoMap = new KakaoMap({ id, options });
-    kakaoMap.searchAddress("신촌");
+    console.log(kakaoMap);
   }, []);
   return (
     <Wrapper>

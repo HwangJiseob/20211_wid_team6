@@ -34,9 +34,6 @@ export class KakaoMap {
     });
     return null;
   }
-  // clickToFindLocation(){
-
-  // }
 }
 
 export const test = () => {

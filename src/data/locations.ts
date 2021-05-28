@@ -1,7 +1,7 @@
 export const sinchon: KakaoLocation = {
   name: "신촌",
   path: "sinchon",
-  latlng: [37.559538103821744, 126.93666472940534],
+  latlng: [37.5552495044505, 126.93693997441386],
 };
 
 const locations: Array<KakaoLocation> = [sinchon];

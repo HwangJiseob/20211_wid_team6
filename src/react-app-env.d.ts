@@ -8,8 +8,8 @@ declare interface ReactProps {
 }
 
 declare interface AppContextData {
-  location: string;
-  setLocation: React.Dispatch<React.SetStateAction<string>>;
+  location: KakaoLocation;
+  setLocation: React.Dispatch<React.SetStateAction<KakaoLocation>>;
 }
 
 declare interface EmotionGlobalProps {

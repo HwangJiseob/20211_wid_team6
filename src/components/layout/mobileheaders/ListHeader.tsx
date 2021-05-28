@@ -83,7 +83,7 @@ const ListMobileHeader = () => {
           </IconButton>
         </LeftSide>
         <Center onClick={showPopup}>
-          {location}
+          {location.name}
           <InvertedTriangle />
         </Center>
         <RightSide>
