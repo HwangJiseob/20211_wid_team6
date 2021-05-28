@@ -88,7 +88,7 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
         {cards.length === 1 &&
           cards.map((card: Store) => {
             return (
-              <Card>
+              <Card key={card.id}>
                 <div>{card.name}</div>
                 <div>후기 개수</div>
                 <div>평점</div>
