@@ -47,6 +47,7 @@ interface NotConstantWrapperProps {
 }
 
 const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
+  const history = useHistory();
   const { location }: any = React.useContext(AppContext);
   const stores = bakeries.filter(
     (bakery) => bakery.location.name === location.name,
@@ -88,10 +89,13 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
         {cards.length === 1 &&
           cards.map((card: Store) => {
             return (
-              <Card key={card.id}>
+              <Card
+                key={card.id}
+                onClick={() => history.push(`/stores/${card.name}`)}
+              >
                 <div>{card.name}</div>
                 <div>후기 개수</div>
-                <div>평점</div>
+                <div>바로 가기</div>
                 <div>주력 테마</div>
               </Card>
             );
@@ -119,7 +123,9 @@ const Cards = styled.div`
   }
 `;
 
-const Card = styled.div`
+const Card = styled.button`
+  all: unset;
+  width: 100%;
   display: grid;
   place-items: center;
   background: #faf8d0;
