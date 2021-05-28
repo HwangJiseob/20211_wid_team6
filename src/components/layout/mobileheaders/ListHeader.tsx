@@ -14,6 +14,7 @@ import IconButton from "@components/IconButton";
 import { wishlist, mapSearch } from "@data/pages";
 import { AppContext } from "@libs/hooks";
 import { switchScrollAvailable } from "@libs/functions";
+import { sinchon, hongdae } from "@data/locations";
 import { Wrapper, Container, LeftSide, Center, RightSide } from "./Commons";
 
 const showupAnimation = keyframes`
@@ -50,7 +51,7 @@ const ListMobileHeader = () => {
   const { theme }: any = useTheme();
   const [clicked, setClicked] = React.useState(false);
 
-  const clickLocation = (standard: string) => {
+  const clickLocation = (standard: KakaoLocation) => {
     setLocation(standard);
   };
 
@@ -116,7 +117,7 @@ const ListMobileHeader = () => {
               location={location}
               theme={theme}
               standard="신촌"
-              onClick={() => clickLocation("신촌")}
+              onClick={() => clickLocation(sinchon)}
             >
               신촌
             </LocationButton>
@@ -124,7 +125,7 @@ const ListMobileHeader = () => {
               location={location}
               theme={theme}
               standard="홍대"
-              onClick={() => clickLocation("홍대")}
+              onClick={() => clickLocation(hongdae)}
             >
               홍대
             </LocationButton>
