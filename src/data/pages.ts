@@ -32,7 +32,7 @@ export const home = {
   icon: HomeSVG,
 };
 
-export const map = {
+export const mapSearch = {
   name: "지도검색",
   title: "지도검색",
   path: "/map",
@@ -112,7 +112,7 @@ const pages: Array<PageRouteInfo> = [
     component: Florists,
   },
   {
-    ...map,
+    ...mapSearch,
     component: Map,
   },
 ];
