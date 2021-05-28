@@ -5,11 +5,6 @@ interface initKakoMapArgs {
 
 const { kakao }: any = window; // resolve tsc and eslint error
 
-export const clickEvent = (e: any) => {
-  const latlng = e.latLng;
-  console.log(latlng.getLat(), latlng.getLng());
-};
-
 export class KakaoMap {
   map: any;
 
@@ -41,13 +36,8 @@ export class KakaoMap {
   }
 }
 
-export const test = () => {
-  console.log("naver");
-};
-
 const kakaoMaps = {
   KakaoMap,
-  test,
 };
 
 export default kakaoMaps;

@@ -1,21 +1,45 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+import { useHistory } from "react-router-dom";
 
-import { AppContext } from "@libs/hooks";
-import { KakaoMap, test } from "@libs/KakaoMap";
+import { showPopupCallback, AppContext } from "@libs/hooks";
+import { KakaoMap } from "@libs/KakaoMap";
 import { defaultBreakpoint } from "@libs/config";
+import { SearchSVG, ArrowRightSVG } from "@assets";
+import IconButton from "@components/IconButton";
+import { LocationsPopup } from "@components/popups";
+
+const arrowRightSVG = css`
+  width: 25px;
+  height: 25px;
+`;
+
+const searchSVG = css`
+  width: 28px;
+  height: 28px;
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 2px solid #515c6f;
+`;
 
 const { kakao }: any = window;
 
-const id = "navermaps";
+const id = "kakaomap";
 
 const Map = () => {
   const { location }: any = React.useContext(AppContext);
+  const history = useHistory();
   const [lat, lng] = location.latlng;
   const options = {
     center: new kakao.maps.LatLng(lat, lng),
     level: 5,
   };
+
+  const [popup, setPopup] = React.useState(false);
+  const [clicked, setClicked] = React.useState(false);
+
+  const showPopup = showPopupCallback({ setClicked, setPopup });
 
   React.useEffect(() => {
     const kakaoMap = new KakaoMap({ id, options });
@@ -23,8 +47,29 @@ const Map = () => {
   }, []);
   return (
     <Wrapper>
-      <LocationSearch onClick={test} />
-      <NaverMap id={id} />
+      <HighZIndex>
+        <LocationsPopup
+          clicked={clicked}
+          setClicked={setClicked}
+          popup={popup}
+          setPopup={setPopup}
+        />
+      </HighZIndex>
+      <LocationSearch>
+        <IconButton onClick={showPopup}>
+          <LeftSide>{location.name}</LeftSide>
+        </IconButton>
+
+        <RightSide>
+          <IconButton>
+            <SearchSVG css={searchSVG} />
+          </IconButton>
+          <IconButton onClick={history.goBack}>
+            <ArrowRightSVG css={arrowRightSVG} />
+          </IconButton>
+        </RightSide>
+      </LocationSearch>
+      <MapRenderer id={id} />
     </Wrapper>
   );
 };
@@ -46,12 +91,17 @@ const Wrapper = styled.div`
 
 const LocationSearch = styled.div`
   width: 100%;
+  display: none;
   ${defaultBreakpoint} {
-    z-index: 20;
+    display: grid;
+    grid-template-columns: 80px auto;
+    align-items: center;
+    z-index: 200;
     position: fixed;
     top: 0;
     left: 0;
-    background: red;
+    background: #e3f2ff;
+    color: black;
     height: calc(65px);
     /*
     + 60px for header.mobile_height
@@ -62,7 +112,29 @@ const LocationSearch = styled.div`
   }
 `;
 
-const NaverMap = styled.div`
+const LeftSide = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+`;
+
+const RightSide = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px;
+`;
+
+// const LocationSearchContainer = styled.div`
+//   height: 100%;
+//   display: grid;
+//   grid-template-columns: 50px auto 50px;
+//   place-items: center;
+//   gap: 5px;
+//   z-index: 10;
+// `;
+
+const MapRenderer = styled.div`
   width: 100%;
   height: calc(100vh - 275px);
   /*
@@ -75,6 +147,12 @@ const NaverMap = styled.div`
   ${defaultBreakpoint} {
     height: 100%;
   }
+`;
+
+const HighZIndex = styled.div`
+  z-index: 100;
+  /* width: 100%; */
+  position: fixed;
 `;
 
 export default Map;
