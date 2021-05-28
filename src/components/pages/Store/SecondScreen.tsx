@@ -53,8 +53,6 @@ const Contents = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
-  /* height: 100%; */
-  /* height: 300px; */
   border-radius: 10px;
   background: #707070;
   ${defaultBreakpoint} {
@@ -85,7 +83,6 @@ const ExampleImage = styled.div`
   max-height: 240px;
   background: #e3f2ff;
 
-  /* display: none; */
   ${defaultBreakpoint} {
     height: 120px;
     width: 100%;

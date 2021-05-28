@@ -39,7 +39,6 @@ const Cards = styled.ul`
 
 const Card = ({ store }: StoreProps) => {
   const wrapper = css`
-    /* all: unset; */
     width: 100%;
     height: 180px;
   `;

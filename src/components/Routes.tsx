@@ -14,7 +14,6 @@ const Routes = () => {
           <Route
             key={store.id}
             exact
-            // path="/stores/:id"
             path={store.path}
             component={() => {
               return (

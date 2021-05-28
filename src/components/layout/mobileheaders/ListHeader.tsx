@@ -11,7 +11,7 @@ import {
   InvertedTriangle,
 } from "@assets";
 import IconButton from "@components/IconButton";
-import { wishlist, map } from "@data/pages";
+import { wishlist, mapSearch } from "@data/pages";
 import { AppContext } from "@libs/hooks";
 import { switchScrollAvailable } from "@libs/functions";
 import { Wrapper, Container, LeftSide, Center, RightSide } from "./Commons";
@@ -76,7 +76,7 @@ const ListMobileHeader = () => {
           <SearchSVG width="20px" height="20px" />
           <IconButton
             onClick={() => {
-              history.push(map.path);
+              history.push(mapSearch.path);
             }}
           >
             <MarkerSVG width="20px" height="20px" />

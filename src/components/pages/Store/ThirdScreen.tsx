@@ -39,7 +39,6 @@ const Items = styled.div`
   flex-direction: column;
   align-items: center;
   width: 90%;
-  /* min-height: 80vh; */
   border-radius: 10px;
   background: #707070;
 
@@ -63,15 +62,6 @@ const Title = styled.h2`
   text-indent: 10px;
   padding: 15px 0 15px 0;
 `;
-
-// const Items = styled.ul`
-//   all: unset;
-//   display: flex;
-//   flex-direction: column;
-//   padding: 0 10px;
-//   ${defaultBreakpoint} {
-//   }
-// `;
 
 const Item = styled.li`
   all: unset;

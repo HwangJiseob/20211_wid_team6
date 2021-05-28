@@ -22,7 +22,6 @@ const more = css`
   width: 90%;
   color: #838383;
   display: flex;
-  /* flex-direction: row-reverse; */
 `;
 
 const Introduction = ({ store }: IntroductionProps) => {

@@ -63,7 +63,6 @@ const BannerButton = styled.button`
   place-items: center;
   width: 100%;
   box-sizing: border-box;
-  /* height: 200px; */
   border-radius: 40px;
   background: #bbd7e5;
   color: white;
