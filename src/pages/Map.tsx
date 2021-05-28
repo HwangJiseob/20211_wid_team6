@@ -101,6 +101,11 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
   );
 };
 
+interface StyledProps {
+  children?: any;
+  theme: string;
+}
+
 const Cards = styled.div`
   ${defaultBreakpoint} {
     display: block;
@@ -119,7 +124,6 @@ const Card = styled.div`
   place-items: center;
   background: #faf8d0;
   height: 100%;
-  color: black;
 `;
 
 const Wrapper = styled.div`
@@ -140,6 +144,7 @@ const Wrapper = styled.div`
 const HeaderPart = () => {
   const [popup, setPopup] = React.useState(false);
   const [clicked, setClicked] = React.useState(false);
+  const { theme }: any = useTheme();
 
   const { location }: any = React.useContext(AppContext);
   const history = useHistory();
@@ -156,7 +161,7 @@ const HeaderPart = () => {
           setPopup={setPopup}
         />
       </HighZIndex>
-      <LocationSearch>
+      <LocationSearch theme={theme}>
         <IconButton onClick={showPopup}>
           <LeftSide>
             {location.name}
@@ -176,7 +181,7 @@ const HeaderPart = () => {
   );
 };
 
-const LocationSearch = styled.div`
+const LocationSearch = styled.div<StyledProps>`
   width: 100%;
   display: none;
   ${defaultBreakpoint} {
@@ -188,7 +193,10 @@ const LocationSearch = styled.div`
     top: 0;
     left: 0;
     background: #e3f2ff;
-    color: black;
+    background: ${(props: StyledProps) =>
+      props.theme === "light" ? "#E3F2FF" : "#181818"};
+    color: ${(props: StyledProps) =>
+      props.theme === "light" ? "#000" : "#fff"};
     height: calc(65px);
     /*
     + 60px for header.mobile_height
@@ -228,11 +236,6 @@ const MapRenderer = styled.div`
   }
 `;
 
-interface CurtainProps {
-  children?: any;
-  theme: string;
-}
-
 const removeAnimation = keyframes`
   from {
   }
@@ -241,13 +244,13 @@ const removeAnimation = keyframes`
   }
 `;
 
-const Curtain = styled(MapRenderer)<CurtainProps>`
+const Curtain = styled(MapRenderer)<StyledProps>`
   animation: ${removeAnimation};
-  animation-duration: 0.3s;
+  animation-duration: 0.5s;
   animation-delay: 0.2s;
   width: 100%;
   position: fixed;
-  background: ${(props: CurtainProps) =>
+  background: ${(props: StyledProps) =>
     props.theme === "light" ? "#E3F2FF" : "#181818"};
   z-index: 400;
 `;
