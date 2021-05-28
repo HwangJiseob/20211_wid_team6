@@ -22,7 +22,9 @@ const MyPage = () => {
         <Button onClick={() => history.push("/anniversaries")}>
           기념일 조회
         </Button>
-        <Button onClick={changeTheme}>change</Button>
+        <Button onClick={changeTheme}>
+          {theme === "light" ? "다크모드" : "라이트모드"}로 변경
+        </Button>
       </Buttons>
     </Wrapper>
   );
