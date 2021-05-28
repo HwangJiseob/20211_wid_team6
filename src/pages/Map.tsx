@@ -10,6 +10,7 @@ import { defaultBreakpoint } from "@libs/config";
 import { SearchSVG, ArrowRightSVG } from "@assets";
 import IconButton from "@components/IconButton";
 import { LocationsPopup } from "@components/popups";
+import { bakeries } from "@data/stores";
 
 const arrowRightSVG = css`
   width: 25px;
@@ -45,6 +46,8 @@ const Map = () => {
     }
     if (kakaoMap.map) {
       kakaoMap?.moveLocation({ lat, lng });
+      kakaoMap?.removeMarkers();
+      kakaoMap?.makeMarkers(bakeries);
     }
   });
   return (

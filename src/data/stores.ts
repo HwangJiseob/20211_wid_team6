@@ -6,6 +6,7 @@ export const bakeries: Array<Store> = [
     id: "1464f404",
     path: "/stores/스노우폭스",
     address: "서울 서대문구 연세로 19",
+    coords: [37.5573962853884, 126.936723922634],
     location: sinchon,
     hour: ["08:30", "22:00"],
     sector: "bakery",

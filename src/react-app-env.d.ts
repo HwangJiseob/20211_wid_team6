@@ -48,9 +48,25 @@ declare interface Store {
   hour: [string, string];
   sector: "bakery" | "florist";
   location: KakaoLocation;
+  coords?: [number, number];
 }
 
 declare interface StoreProps {
   children?: ReactProps;
   store: Store;
+}
+
+declare interface Coords {
+  lat: number;
+  lng: number;
+}
+
+declare class KakaoMap {
+  map: any;
+  geocoder: any;
+  markers: Array<any>;
+  searchAddress: (address: string) => void;
+  moveLocation: (coords: Coords) => any;
+  makeMarkers: (stores: Array<Stores>) => void;
+  removeMarkers: () => void;
 }
