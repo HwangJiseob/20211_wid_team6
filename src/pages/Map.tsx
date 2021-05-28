@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+import { css, keyframes, useTheme } from "@emotion/react";
 import { useHistory } from "react-router-dom";
 
 import { showPopupCallback, AppContext } from "@libs/hooks";
@@ -30,10 +30,28 @@ const { kakao }: any = window;
 const id = "kakaomap";
 
 const Map = () => {
+  const [initial, setInitial] = React.useState(true);
+
+  React.useEffect(() => {
+    if (initial) {
+      setTimeout(() => {
+        setInitial(false);
+      }, 400);
+    }
+  }, []);
+  return <NotConstantWrapper initial={initial} />;
+};
+
+interface NotConstantWrapperProps {
+  initial: boolean;
+}
+
+const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
   const { location }: any = React.useContext(AppContext);
   const stores = bakeries.filter(
     (bakery) => bakery.location.name === location.name,
   );
+  const { theme }: any = useTheme();
 
   const [cards, setCards] = React.useState(stores);
   const [kakaoMap, setKakaoMap]: any = React.useState({});
@@ -52,6 +70,7 @@ const Map = () => {
         setCards,
       });
       setKakaoMap(kakaoMapInstance);
+      setTimeout(() => {}, 500);
     }
     if (kakaoMap.map) {
       /* re-renders only for location updates */
@@ -63,6 +82,7 @@ const Map = () => {
   return (
     <Wrapper>
       <HeaderPart />
+      {initial && <Curtain theme={theme} />}
       <MapRenderer id={id} />
       <Cards>
         {cards.length === 1 &&
@@ -140,7 +160,6 @@ const HeaderPart = () => {
         <IconButton onClick={showPopup}>
           <LeftSide>{location.name}</LeftSide>
         </IconButton>
-
         <RightSide>
           <IconButton>
             <SearchSVG css={searchSVG} />
@@ -203,6 +222,30 @@ const MapRenderer = styled.div`
   ${defaultBreakpoint} {
     height: 100%;
   }
+`;
+
+interface CurtainProps {
+  children?: any;
+  theme: string;
+}
+
+const removeAnimation = keyframes`
+  from {
+  }
+  to {
+    opacity: 0;
+  }
+`;
+
+const Curtain = styled(MapRenderer)<CurtainProps>`
+  animation: ${removeAnimation};
+  animation-duration: 0.3s;
+  animation-delay: 0.2s;
+  width: 100%;
+  position: fixed;
+  background: ${(props: CurtainProps) =>
+    props.theme === "light" ? "#fff" : "#181818"};
+  z-index: 400;
 `;
 
 const HighZIndex = styled.div`
