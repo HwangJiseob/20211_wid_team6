@@ -56,6 +56,7 @@
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "craco-alias": "^3.0.0",
+    "daum.maps.d.ts": "github:Musma/daum.maps.d.ts",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",

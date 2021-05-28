@@ -1,6 +1,7 @@
 /// <reference types="react-scripts" />
 /// <reference types="@emotion/react" />
 /// <reference types="@emotion/react/types/css-prop" />
+/// <reference types="daum.maps.d.ts"/>
 
 declare interface ReactProps {
   children?: React.ReactNode;
@@ -33,6 +34,12 @@ declare interface PageRouteInfo extends PageInfo {
   component: () => JSX.Element;
 }
 
+declare interface KakaoLocation {
+  name: string;
+  path: string;
+  latlng: [number, number];
+}
+
 declare interface Store {
   name: string;
   id: string;
@@ -40,10 +47,7 @@ declare interface Store {
   address: string;
   hour: [string, string];
   sector: "bakery" | "florist";
-  location: {
-    name: string;
-    path: string;
-  };
+  location: KakaoLocation;
 }
 
 declare interface StoreProps {

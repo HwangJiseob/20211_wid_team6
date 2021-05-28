@@ -114,6 +114,7 @@ const ListMobileHeader = () => {
           <PopupRow>
             <LocationButton
               location={location}
+              theme={theme}
               standard="신촌"
               onClick={() => clickLocation("신촌")}
             >
@@ -121,6 +122,7 @@ const ListMobileHeader = () => {
             </LocationButton>
             <LocationButton
               location={location}
+              theme={theme}
               standard="홍대"
               onClick={() => clickLocation("홍대")}
             >
@@ -183,7 +185,7 @@ const PopupContainer = styled.div<PopupProps>`
   width: 100%;
   height: 50vh;
   background: ${(props: PopupProps) =>
-    props.theme === "light" ? "#fff" : "#181818"};
+    props.theme === "light" ? "#fffde5" : "#181818"};
   transition-duration: 0.5s;
   z-index: -10;
 `;
@@ -211,16 +213,22 @@ interface LocationButtonProps {
   children?: any;
   location?: string;
   standard?: string;
+  theme?: string;
 }
 
 const LocationButton = styled.button<LocationButtonProps>`
   all: unset;
   ${(props: LocationButtonProps) => {
-    return `border: 1px solid ${
-      props.location === props.standard ? "blue" : "#b4b4b4"
-    };
-    color: ${props.location === props.standard ? "blue" : "#b4b4b4"};`;
+    return `background: ${props.theme === "light" ? "#fff" : "none"};`;
   }}
+  ${(props: LocationButtonProps) => {
+    return `border: 1.5px solid ${
+      props.location === props.standard ? "#E3F2FF" : "#b4b4b4"
+    };
+    color: ${props.location === props.standard ? "black" : "#b4b4b4"};
+    background: ${props.location === props.standard && "#E3F2FF"};`;
+  }}
+  box-sizing: border-box;
   border-radius: 10px;
   height: 48px;
   width: 100%;

@@ -1,7 +1,4 @@
-const sinchon = {
-  name: "신촌",
-  path: "sinchon",
-};
+import { sinchon } from "./locations";
 
 export const bakeries: Array<Store> = [
   {
