@@ -30,8 +30,13 @@ const { kakao }: any = window;
 const id = "kakaomap";
 
 const Map = () => {
-  const [kakaoMap, setKakaoMap]: any = React.useState({});
   const { location }: any = React.useContext(AppContext);
+  const stores = bakeries.filter(
+    (bakery) => bakery.location.name === location.name,
+  );
+
+  const [cards, setCards] = React.useState(stores);
+  const [kakaoMap, setKakaoMap]: any = React.useState({});
   const [lat, lng] = location.latlng;
   const options = {
     center: new kakao.maps.LatLng(lat, lng),
@@ -41,22 +46,61 @@ const Map = () => {
   React.useEffect(() => {
     const kakaoDiv = document.getElementById(id);
     if ((kakaoDiv?.childNodes.length || 0) < 3) {
-      const kakaoMapInstance = new KakaoMap({ id, options });
+      const kakaoMapInstance = new KakaoMap({
+        id,
+        options,
+        setCards,
+      });
       setKakaoMap(kakaoMapInstance);
     }
     if (kakaoMap.map) {
+      /* re-renders only for location updates */
       kakaoMap?.moveLocation({ lat, lng });
       kakaoMap?.removeMarkers();
-      kakaoMap?.makeMarkers(bakeries);
+      kakaoMap?.makeMarkers(stores);
     }
   });
   return (
     <Wrapper>
       <HeaderPart />
       <MapRenderer id={id} />
+      <Cards>
+        {cards.length === 1 &&
+          cards.map((card: Store) => {
+            return (
+              <Card>
+                <div>{card.name}</div>
+                <div>후기 개수</div>
+                <div>평점</div>
+                <div>주력 테마</div>
+              </Card>
+            );
+          })}
+      </Cards>
     </Wrapper>
   );
 };
+
+const Cards = styled.div`
+  ${defaultBreakpoint} {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 30vh;
+    padding: 10px 30px;
+    z-index: 300;
+    box-sizing: border-box;
+  }
+`;
+
+const Card = styled.div`
+  display: grid;
+  place-items: center;
+  background: #faf8d0;
+  height: 100%;
+  color: black;
+`;
 
 const Wrapper = styled.div`
   ${defaultBreakpoint} {
@@ -145,15 +189,6 @@ const RightSide = styled.div`
   justify-content: flex-end;
   padding: 0 10px;
 `;
-
-// const LocationSearchContainer = styled.div`
-//   height: 100%;
-//   display: grid;
-//   grid-template-columns: 50px auto 50px;
-//   place-items: center;
-//   gap: 5px;
-//   z-index: 10;
-// `;
 
 const MapRenderer = styled.div`
   width: 100%;

@@ -1,26 +1,36 @@
 interface initKakoMapArgs {
   id: string;
   options: any;
+  setCards: React.Dispatch<React.SetStateAction<Store[]>>;
 }
 
 const { kakao }: any = window; // resolve tsc and eslint error
+
+interface Marker {
+  store: Store;
+  marker: any;
+}
 
 export class KakaoMap {
   map: any;
 
   geocoder: any;
 
-  markers: Array<any>;
+  markers: Array<Marker>;
 
-  constructor({ id, options }: initKakoMapArgs) {
+  clickMarker: (stores: Store[]) => void;
+
+  constructor({ id, options, setCards }: initKakoMapArgs) {
     const mapDiv = document.getElementById(id) || "null";
     this.map = new kakao.maps.Map(mapDiv, options);
     this.geocoder = new kakao.maps.services.Geocoder();
     this.markers = [];
+    this.clickMarker = (stores: Store[]) => {
+      setCards(stores);
+    };
 
-    kakao.maps.event.addListener(this.map, "click", (e: any) => {
-      const latlng = e.latLng;
-      console.log(latlng.getLat(), latlng.getLng());
+    kakao.maps.event.addListener(this.map, "click", () => {
+      setCards([]);
     });
   }
 
@@ -29,7 +39,6 @@ export class KakaoMap {
       if (status === kakao.maps.services.Status.OK) {
         const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
         this.map.setCenter(coords);
-        console.log(coords);
         return result;
       }
       return null;
@@ -51,15 +60,26 @@ export class KakaoMap {
         const marker = new kakao.maps.Marker({
           position: markerPosition,
         });
+
+        kakao.maps.event.addListener(marker, "click", () => {
+          const exacts = this.markers.filter(
+            (target: Marker) => target.marker === marker,
+          );
+          if (exacts) {
+            const result = exacts.map((exact: Marker) => exact.store);
+            this.clickMarker(result);
+          }
+        });
         marker.setMap(this.map);
-        this.markers.push(marker);
+        this.markers.push({ store, marker });
       }
     });
   }
 
   removeMarkers() {
     if (this.markers.length > 0) {
-      this.markers.forEach((marker: any) => {
+      this.markers.forEach(({ marker }: any) => {
+        kakao.maps.event.addListener(marker, "click", null);
         marker.setMap(null);
       });
     }
