@@ -15,7 +15,6 @@ export class KakaoMap {
     this.map = new kakao.maps.Map(mapDiv, options);
     this.geocoder = new kakao.maps.services.Geocoder();
 
-    // kakao.maps.event.addListener(this.map, "click", clickEvent);
     kakao.maps.event.addListener(this.map, "click", (e: any) => {
       const latlng = e.latLng;
       console.log(latlng.getLat(), latlng.getLng());
@@ -33,6 +32,12 @@ export class KakaoMap {
       return null;
     });
     return null;
+  }
+
+  moveLocation({ lat, lng }: any) {
+    const coords = new kakao.maps.LatLng(lat, lng);
+    this.map.setCenter(coords);
+    return coords;
   }
 }
 

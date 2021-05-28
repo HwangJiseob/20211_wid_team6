@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
@@ -28,25 +29,58 @@ const { kakao }: any = window;
 const id = "kakaomap";
 
 const Map = () => {
+  const [kakaoMap, setKakaoMap]: any = React.useState({});
   const { location }: any = React.useContext(AppContext);
-  const history = useHistory();
   const [lat, lng] = location.latlng;
   const options = {
     center: new kakao.maps.LatLng(lat, lng),
     level: 5,
   };
 
+  React.useEffect(() => {
+    const kakaoDiv = document.getElementById(id);
+    if ((kakaoDiv?.childNodes.length || 0) < 3) {
+      const kakaoMapInstance = new KakaoMap({ id, options });
+      setKakaoMap(kakaoMapInstance);
+    }
+    if (kakaoMap.map) {
+      kakaoMap?.moveLocation({ lat, lng });
+    }
+  });
+  return (
+    <Wrapper>
+      <HeaderPart />
+      <MapRenderer id={id} />
+    </Wrapper>
+  );
+};
+
+const Wrapper = styled.div`
+  ${defaultBreakpoint} {
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 65px);
+    /*
+      + 60px for header.mobile_height
+      + 5px for margins and paddings
+      ---------------------------------------
+      = 150px
+     */
+  }
+`;
+
+const HeaderPart = () => {
   const [popup, setPopup] = React.useState(false);
   const [clicked, setClicked] = React.useState(false);
 
+  const { location }: any = React.useContext(AppContext);
+  const history = useHistory();
+
   const showPopup = showPopupCallback({ setClicked, setPopup });
 
-  React.useEffect(() => {
-    const kakaoMap = new KakaoMap({ id, options });
-    console.log(kakaoMap);
-  }, []);
   return (
-    <Wrapper>
+    <>
       <HighZIndex>
         <LocationsPopup
           clicked={clicked}
@@ -69,25 +103,9 @@ const Map = () => {
           </IconButton>
         </RightSide>
       </LocationSearch>
-      <MapRenderer id={id} />
-    </Wrapper>
+    </>
   );
 };
-
-const Wrapper = styled.div`
-  ${defaultBreakpoint} {
-    left: 0;
-    position: absolute;
-    width: 100%;
-    height: calc(100vh - 65px);
-    /*
-      + 60px for header.mobile_height
-      + 5px for margins and paddings
-      ---------------------------------------
-      = 150px
-     */
-  }
-`;
 
 const LocationSearch = styled.div`
   width: 100%;

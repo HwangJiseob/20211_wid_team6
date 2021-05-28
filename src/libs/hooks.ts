@@ -1,7 +1,6 @@
 import React from "react";
 
 import { switchScrollAvailable } from "./functions";
-import { KakaoMap } from "./KakaoMap";
 
 export const preventTransition = (dispatch: React.Dispatch<string>) => {
   React.useEffect(() => {
@@ -14,19 +13,6 @@ export const switchTheme = ({ theme, setTheme }: ThemeProps) => {
     const next = theme === "dark" ? "light" : "dark";
     setTheme(next);
   }, [theme, setTheme]);
-};
-
-interface initKakoMapArgs {
-  id: string;
-  options: any;
-  location: any;
-}
-
-export const initKakaoMap = ({ id, options }: initKakoMapArgs) => {
-  React.useEffect(() => {
-    const kakaoMap = new KakaoMap({ id, options });
-    kakaoMap.searchAddress("신촌");
-  }, []);
 };
 
 interface ShowPopupProps {
@@ -47,7 +33,6 @@ export const AppContext = React.createContext({});
 const hooks = {
   preventTransition,
   switchTheme,
-  initKakaoMap,
   showPopupCallback,
   AppContext,
 };
