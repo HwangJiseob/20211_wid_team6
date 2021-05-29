@@ -12,19 +12,6 @@ import IconButton from "@components/IconButton";
 import { LocationsPopup } from "@components/popups";
 import { bakeries } from "@data/stores";
 
-const arrowRightSVG = css`
-  width: 25px;
-  height: 25px;
-`;
-
-const searchSVG = css`
-  width: 28px;
-  height: 28px;
-  padding-right: 10px;
-  margin-right: 10px;
-  border-right: 2px solid #515c6f;
-`;
-
 const { kakao }: any = window;
 
 const id = "kakaomap";
@@ -46,6 +33,19 @@ interface NotConstantWrapperProps {
   initial: boolean;
 }
 
+const arrowRightSVG = css`
+  width: 25px;
+  height: 25px;
+`;
+
+const searchSVG = css`
+  width: 28px;
+  height: 28px;
+  padding-right: 10px;
+  margin-right: 10px;
+  border-right: 2px solid #515c6f;
+`;
+
 const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
   const history = useHistory();
   const { location }: any = React.useContext(AppContext);
@@ -63,6 +63,10 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
   };
 
   React.useEffect(() => {
+    setCards([]);
+  }, [location]);
+
+  React.useEffect(() => {
     const kakaoDiv = document.getElementById(id);
     if ((kakaoDiv?.childNodes.length || 0) < 3) {
       const kakaoMapInstance = new KakaoMap({
@@ -75,6 +79,7 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
     }
     if (kakaoMap.map) {
       /* re-renders only for location updates */
+      kakaoMap?.map.setLevel(5);
       kakaoMap?.moveLocation({ lat, lng });
       kakaoMap?.removeMarkers();
       kakaoMap?.makeMarkers(stores);

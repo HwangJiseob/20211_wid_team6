@@ -31,6 +31,7 @@ export class KakaoMap {
     this.clickMarker = (stores: Store[]) => {
       setCards(stores);
     };
+    this.map.setMaxLevel(7);
 
     kakao.maps.event.addListener(this.map, "click", () => {
       if (this.cardShown) {
