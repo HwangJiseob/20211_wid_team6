@@ -20,4 +20,17 @@
 
 - Built with CRA, initiated with cra-template-typescript
 - craco module used for emotion.js and path alias
-- Naver Maps (적용 예정)
+- Kakao Map API
+
+## Progress
+
+- Calendar in Anniversaries.tsx
+- Carousels
+- Product -> WishList -> Pay task
+- Pages left: Product, WishList, Anniversaries (Reviews와 Search는 제외)
+
+## Issues
+
+1.  make Kakao map instance as singleton (not influenced by react re-rendering)
+2.  Kakao map type for tsc and eslint
+3.  Consideration about project structure

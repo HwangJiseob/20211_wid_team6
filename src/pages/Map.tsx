@@ -93,10 +93,19 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
                 key={card.id}
                 onClick={() => history.push(`/stores/${card.name}`)}
               >
-                <div>{card.name}</div>
-                <div>후기 개수</div>
-                <div>바로 가기</div>
-                <div>주력 테마</div>
+                <ExampleImage>이미지</ExampleImage>
+                <Descriptions>
+                  <div>{card.name}</div>
+                  <div>
+                    후기<div>3개</div>
+                  </div>
+                  <div>
+                    별점<div>☆ 4.5</div>
+                  </div>
+                  <div>
+                    주력상품<div>효도선물</div>
+                  </div>
+                </Descriptions>
               </Card>
             );
           })}
@@ -105,19 +114,38 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
   );
 };
 
+const ExampleImage = styled.div`
+  display: grid;
+  place-items: center;
+  width: 120px;
+  height: 100%;
+  background: #d4dce2;
+`;
+
+const Descriptions = styled.div`
+  width: 100%;
+  padding: 0 20px 0 0;
+  box-sizing: border-box;
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
 interface StyledProps {
   children?: any;
   theme: string;
 }
 
 const Cards = styled.div`
+  display: none;
   ${defaultBreakpoint} {
     display: block;
     position: fixed;
     bottom: 0;
     width: 100vw;
-    height: 30vh;
-    padding: 10px 30px;
+    height: 160px;
+    padding: 10px 4vw;
     z-index: 300;
     box-sizing: border-box;
   }
@@ -127,9 +155,12 @@ const Card = styled.button`
   all: unset;
   width: 100%;
   display: grid;
+  grid-template-columns: 120px auto;
   place-items: center;
+  gap: 10px;
   background: #faf8d0;
   height: 100%;
+  color: black;
 `;
 
 const Wrapper = styled.div`
