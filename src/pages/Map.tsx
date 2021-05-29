@@ -85,9 +85,9 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
       <HeaderPart />
       {initial && <Curtain theme={theme} />}
       <MapRenderer id={id} />
-      <Cards>
-        {cards.length === 1 &&
-          cards.map((card: Store) => {
+      {cards.length === 1 && (
+        <Cards>
+          {cards.map((card: Store) => {
             return (
               <Card
                 key={card.id}
@@ -109,7 +109,8 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
               </Card>
             );
           })}
-      </Cards>
+        </Cards>
+      )}
     </Wrapper>
   );
 };

@@ -18,6 +18,8 @@ export class KakaoMap {
 
   markers: Array<Marker>;
 
+  cardShown: boolean;
+
   clickMarker: (stores: Store[]) => void;
 
   constructor({ id, options, setCards }: initKakoMapArgs) {
@@ -25,12 +27,15 @@ export class KakaoMap {
     this.map = new kakao.maps.Map(mapDiv, options);
     this.geocoder = new kakao.maps.services.Geocoder();
     this.markers = [];
+    this.cardShown = false;
     this.clickMarker = (stores: Store[]) => {
       setCards(stores);
     };
 
     kakao.maps.event.addListener(this.map, "click", () => {
-      setCards([]);
+      if (this.cardShown) {
+        setCards([]);
+      }
     });
   }
 
@@ -67,6 +72,7 @@ export class KakaoMap {
           );
           if (exacts) {
             const result = exacts.map((exact: Marker) => exact.store);
+            this.cardShown = true;
             this.clickMarker(result);
           }
         });
