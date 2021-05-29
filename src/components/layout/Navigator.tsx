@@ -52,6 +52,7 @@ const navLink = css`
   font-size: 18px;
   ${defaultBreakpoint} {
     font-size: 11px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 `;
 
