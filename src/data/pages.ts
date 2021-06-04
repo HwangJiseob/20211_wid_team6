@@ -7,6 +7,7 @@ import {
   Reviews,
   Search,
   Wishlist,
+  Bills,
 } from "@pages";
 
 import {
@@ -74,6 +75,13 @@ export const florists = {
   icon: SearchSVG, // 임시
 };
 
+export const bills = {
+  name: "결제내역",
+  path: "/bills",
+  title: "결제 내역",
+  icon: SearchSVG, // 임시
+};
+
 export const items: Array<PageInfo> = [
   home,
   search,
@@ -114,6 +122,10 @@ const pages: Array<PageRouteInfo> = [
   {
     ...mapSearch,
     component: Map,
+  },
+  {
+    ...bills,
+    component: Bills,
   },
 ];
 

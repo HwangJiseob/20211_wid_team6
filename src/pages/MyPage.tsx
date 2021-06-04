@@ -19,6 +19,7 @@ const MyPage = () => {
       </Profile>
       <Buttons theme={theme}>
         <Button onClick={() => history.push("/wishlist")}>장바구니</Button>
+        <Button onClick={() => history.push("/bills")}>결제 내역</Button>
         <Button onClick={() => history.push("/anniversaries")}>
           기념일 조회
         </Button>

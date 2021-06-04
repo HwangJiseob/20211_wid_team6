@@ -12,6 +12,8 @@ declare interface AppContextData {
   setLocation: React.Dispatch<React.SetStateAction<KakaoLocation>>;
   wishes: any;
   setWishes: any;
+  bills: any;
+  setBills: an;
 }
 
 declare interface EmotionGlobalProps {

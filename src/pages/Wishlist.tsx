@@ -29,7 +29,7 @@ const WishList = () => {
     case 1:
       return <Step2 step={step} setStep={setStep} />;
     case 2:
-      return <Step3 step={step} setStep={setStep} />;
+      return <Step3 />;
     default:
       return <Step1 step={step} setStep={setStep} />;
   }
@@ -112,14 +112,34 @@ const Step1 = (props: StepProps) => {
 
 const Step2 = (props: StepProps) => {
   const { setStep } = props;
-  const { setWishes }: any = React.useContext(AppContext);
+  const { wishes, setWishes, bills, setBills }: any =
+    React.useContext(AppContext);
 
   const [requirements, setRequirements] = React.useState("");
   const [pickupTime, setPickupTime] = React.useState("");
-  console.log(setStep);
+
+  const prices = wishes.map((wish: any) => {
+    const { product, options } = wish;
+    return (
+      product.price +
+      options
+        .map((option: any) => option.price * option.num)
+        .reduce((acc: any, cur: any) => acc + cur)
+    );
+  });
 
   const contract = () => {
     setWishes([]);
+    setBills([
+      ...bills,
+      {
+        timee: new Date(),
+        price: prices.reduce((acc: any, cur: any) => acc + cur),
+        requirements,
+        pickupTime,
+        products: wishes,
+      },
+    ]);
     setStep(2);
   };
 
@@ -154,9 +174,8 @@ const Step2 = (props: StepProps) => {
   );
 };
 
-const Step3 = (props: StepProps) => {
+const Step3 = () => {
   const history = useHistory();
-  console.log(props);
   return (
     <Wrapper>
       <div>
@@ -184,7 +203,9 @@ const Step3 = (props: StepProps) => {
           gap: 20px;
         `}
       >
-        <PayButton>주문내역 확인</PayButton>
+        <PayButton onClick={() => history.push("/bills")}>
+          주문내역 확인
+        </PayButton>
         <PayButton onClick={() => history.push("/")}>
           <HomeSVG /> 더 둘러보기
         </PayButton>

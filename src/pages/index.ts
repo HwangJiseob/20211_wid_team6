@@ -7,6 +7,7 @@ import NotFound from "./NotFound";
 import Reviews from "./Reviews";
 import Search from "./Search";
 import Wishlist from "./Wishlist";
+import Bills from "./Bills";
 
 export {
   Anniversaries,
@@ -18,6 +19,7 @@ export {
   Reviews,
   Search,
   Wishlist,
+  Bills,
 };
 
 const pageComponents = {
@@ -30,6 +32,7 @@ const pageComponents = {
   Reviews,
   Search,
   Wishlist,
+  Bills,
 };
 
 export default pageComponents;
