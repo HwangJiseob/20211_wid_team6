@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { useHistory } from "react-router-dom";
 
 import { defaultBreakpoint } from "@libs/config";
 import { flowers } from "@data/products";
@@ -8,8 +9,8 @@ import { AppContext } from "@libs/hooks";
 import Carousel from "./pages/Store/Carousel";
 
 const Product = (props: ProductProps) => {
+  const history = useHistory();
   const { wishes, setWishes }: any = React.useContext(AppContext);
-  console.log(wishes, setWishes);
   const { product } = props;
   const [options, setOptions] = React.useState(
     flowers.map((flower, index) => {
@@ -107,7 +108,14 @@ const Product = (props: ProductProps) => {
             </Tab>
             <CartButton
               onClick={() => {
-                setWishes([...wishes, options]);
+                setWishes([
+                  ...wishes,
+                  {
+                    product,
+                    options,
+                  },
+                ]);
+                history.push("/wishlist");
               }}
             >
               {priceSum === 0 ? "선택해주세요" : "장바구니에 담기"}
