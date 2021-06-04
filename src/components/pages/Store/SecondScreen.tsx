@@ -2,22 +2,29 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import { layout, defaultBreakpoint } from "@libs/config";
+import { formatNumber } from "@libs/functions";
+import { editions } from "@data/products";
 import Screen from "./Screen";
 
 const { header } = layout;
 
 const SecondScreen = () => {
-  const items = [1, 2, 3, 4];
   return (
     <Wrapper>
       <Container>
         <Contents>
           <Title> 빠른 주문</Title>
           <Items>
-            {items.map((item) => (
-              <Item key={item}>
+            {editions.map((edition) => (
+              <Item key={edition.name}>
                 <ExampleImage />
-                {item}
+                {edition.name}
+                <div>
+                  {edition.dicsount > 0 && (
+                    <Discount>{edition.dicsount}%</Discount>
+                  )}
+                  <span>{formatNumber(edition.price)}원</span>
+                </div>
               </Item>
             ))}
           </Items>
@@ -54,7 +61,7 @@ const Contents = styled.div`
   flex-direction: column;
   width: 90%;
   border-radius: 10px;
-  background: #707070;
+  background: #d3d3d3;
   ${defaultBreakpoint} {
     display: grid;
     grid-template-rows: 72px auto;
@@ -84,7 +91,8 @@ const ExampleImage = styled.div`
   background: #e3f2ff;
 
   ${defaultBreakpoint} {
-    height: 120px;
+    /* height: 120px; */
+    height: 70%;
     width: 100%;
   }
 `;
@@ -94,7 +102,14 @@ const Item = styled.li`
   width: 80%;
   ${defaultBreakpoint} {
     width: 100%;
+    height: 100%;
   }
+`;
+
+const Discount = styled.span`
+  color: #ff4500;
+  font-weight: bold;
+  margin: 0 10px 0 0;
 `;
 
 export default SecondScreen;

@@ -57,7 +57,7 @@ const Button = styled.button`
   height: 100%;
   display: grid;
   place-items: center;
-  background: #7e7e7e;
+  background: #d3d3d3;
 `;
 const ButtonSelected = styled(Button)`
   background: initial;

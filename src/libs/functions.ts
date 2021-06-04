@@ -11,9 +11,23 @@ export const switchScrollAvailable = () => {
   }
 };
 
+export const formatNumber = (target: number) => {
+  if (target === 0) {
+    return 0;
+  }
+
+  const num = `${target}`;
+
+  const regexp = /\B(?=(\d{3})+(?!\d))/g;
+  return num.toString().replace(regexp, ",");
+
+  // ref: https://doolyit.tistory.com/127
+};
+
 const functions = {
   findPreferColor,
   switchScrollAvailable,
+  formatNumber,
 };
 
 export default functions;
