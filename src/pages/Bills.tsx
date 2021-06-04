@@ -4,8 +4,7 @@ import { AppContext } from "@libs/hooks";
 
 const Bills = () => {
   const { bills }: any = React.useContext(AppContext);
-  console.log(bills);
-  return <div>bill</div>;
+  return <div>{bills ? "구매내역 있음" : "구매내역 없음."}</div>;
 };
 
 export default Bills;

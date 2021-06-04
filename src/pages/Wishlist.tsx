@@ -21,7 +21,6 @@ const step2Input = css`
 
 const WishList = () => {
   const [step, setStep] = React.useState(0);
-  console.log(step);
 
   switch (step) {
     case 0:
@@ -98,7 +97,6 @@ const Step1 = (props: StepProps) => {
           </div>
           <PayButton
             onClick={() => {
-              console.log("??");
               setStep(1);
             }}
           >

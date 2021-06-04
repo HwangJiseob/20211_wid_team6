@@ -30,8 +30,6 @@ const Product = (props: ProductProps) => {
           .map((option) => option.price * option.num)
           .reduce((acc, cur) => acc + cur);
 
-  console.log(priceSum, numSum);
-
   const add = (option: string) => {
     if (product.limit === 1) {
       const [target] = options.filter((o) => o.name === option);
@@ -43,7 +41,6 @@ const Product = (props: ProductProps) => {
       return null;
     }
     if (numSum >= product.limit) {
-      console.log("exceed");
       return null;
     }
     const [target] = options.filter((o) => o.name === option);
@@ -108,14 +105,17 @@ const Product = (props: ProductProps) => {
             </Tab>
             <CartButton
               onClick={() => {
-                setWishes([
-                  ...wishes,
-                  {
-                    product,
-                    options,
-                  },
-                ]);
-                history.push("/wishlist");
+                if (numSum > 0) {
+                  setWishes([
+                    ...wishes,
+                    {
+                      product,
+                      options,
+                    },
+                  ]);
+                  history.push("/wishlist");
+                }
+                return null;
               }}
             >
               {priceSum === 0 ? "선택해주세요" : "장바구니에 담기"}
