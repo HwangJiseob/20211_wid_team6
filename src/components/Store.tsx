@@ -35,7 +35,7 @@ const Store = ({ store }: StoreProps) => {
         <Menu theme={theme} selected={selected} setSelected={setSelected} />
       </FirstScreen>
       <SecondScreen />
-      <ThirdScreen />
+      <ThirdScreen store={store} />
     </Wrapper>
   );
 };

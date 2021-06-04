@@ -2,13 +2,31 @@ import { Switch, Route } from "react-router-dom";
 
 import pages from "@data/pages";
 import stores from "@data/stores";
+import { products } from "@data/products";
 import Page from "@components/Page";
 import Store from "@components/Store";
+import Product from "@components/Product";
 import { NotFound } from "@pages";
 
 const Routes = () => {
   return (
     <Switch>
+      {products.map((product) => {
+        return (
+          <Route
+            key={product.path}
+            exact
+            path={product.path}
+            component={() => {
+              return (
+                <Page title={product.name}>
+                  <Product product={product} />
+                </Page>
+              );
+            }}
+          />
+        );
+      })}
       {stores.map((store) => {
         return (
           <Route

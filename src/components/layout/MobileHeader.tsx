@@ -5,6 +5,7 @@ import {
   HomeMobileHeader,
   ListMobileHeader,
   StoreMobileHeader,
+  ProductHeader,
 } from "@components/layout/mobileheaders";
 
 const MobileHeader = () => {
@@ -18,6 +19,8 @@ const MobileHeader = () => {
       return <ListMobileHeader />;
     case "stores":
       return <StoreMobileHeader />;
+    case "products":
+      return <ProductHeader />;
     default:
       return <div style={{ display: "none" }} />;
   }

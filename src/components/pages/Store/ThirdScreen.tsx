@@ -1,25 +1,44 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+import { NavLink } from "react-router-dom";
 
 import { defaultBreakpoint } from "@libs/config";
 import { products } from "@data/products";
 import Screen from "./Screen";
 
-const ThirdScreen = () => {
+const item = css`
+  all: unset;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: black;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  justify-content: center;
+`;
+
+const ThirdScreen = (props: StoreProps) => {
+  const { store } = props;
+  const { id } = store;
   return (
     <Wrapper>
       <Container>
         <Items>
           <Title>제작 주문</Title>
-          {products.map((product) => (
-            <Item key={product.name}>
-              <ExampleImage />
-              <RightSide>
-                <span>{product.name}</span>
-                <span>{product.price}원~</span>
-              </RightSide>
-            </Item>
-          ))}
+          {products.map(
+            (product) =>
+              product.storeId === id && (
+                <NavLink key={product.name} to={product.path} css={item}>
+                  <Item>
+                    <ExampleImage />
+                    <RightSide>
+                      <span>{product.name}</span>
+                      <span>{product.price}원~</span>
+                    </RightSide>
+                  </Item>
+                </NavLink>
+              ),
+          )}
         </Items>
       </Container>
     </Wrapper>
@@ -59,7 +78,7 @@ const Items = styled.div`
     border-top: initial;
   }
   li:last-child {
-    margin: 5px 0 10px 0;
+    margin: 5px 0 15px 0;
   }
 `;
 
@@ -77,13 +96,14 @@ const ExampleImage = styled.div`
   display: block;
   ${defaultBreakpoint} {
     width: 100px;
-    min-height: 80px;
+    min-height: 70px;
     background: #e6afc0;
   }
 `;
 
 const Item = styled.li`
   all: unset;
+  width: 100%;
   display: flex;
 `;
 

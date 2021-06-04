@@ -10,6 +10,8 @@ declare interface ReactProps {
 declare interface AppContextData {
   location: KakaoLocation;
   setLocation: React.Dispatch<React.SetStateAction<KakaoLocation>>;
+  wishes: any;
+  setWishes: any;
 }
 
 declare interface EmotionGlobalProps {
@@ -69,4 +71,17 @@ declare class KakaoMap {
   moveLocation: (coords: Coords) => any;
   makeMarkers: (stores: Array<Stores>) => void;
   removeMarkers: () => void;
+}
+
+declare interface Product {
+  name: string;
+  path: string;
+  limit: number;
+  price: number;
+  storeId?: string;
+}
+
+declare interface ProductProps {
+  children?: ReactProps;
+  product: Product;
 }

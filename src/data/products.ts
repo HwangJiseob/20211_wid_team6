@@ -1,39 +1,44 @@
-export const products = [
+export const products: Product[] = [
   {
     name: "한송이",
     path: "/products/0001",
     limit: 1,
     price: 3_000,
+    storeId: "1464f404",
   },
   {
     name: "S 꽃다발",
     path: "/products/0002",
     limit: 2,
     price: 6_000,
+    storeId: "1464f404",
   },
   {
     name: "M 꽃다발",
     path: "/products/0003",
     limit: 8,
     price: 20_000,
+    storeId: "1464f404",
   },
   {
     name: "L 꽃다발",
     path: "/products/004",
     limit: 15,
     price: 35_000,
+    storeId: "1464f404",
   },
   {
     name: "XL 꽃다발",
     path: "/products/005",
     limit: 20,
     price: 35_000,
+    storeId: "1464f404",
   },
 ];
 
 export const flowers = [
   {
-    name: "해바라기",
+    name: "장미",
     price: 2_500,
   },
   {

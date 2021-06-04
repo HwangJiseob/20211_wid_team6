@@ -23,10 +23,13 @@ const GlobalWrapper = ({ children }: ReactProps) => {
   };
 
   const [location, setLocation] = React.useState(sinchon);
+  const [wishes, setWishes] = React.useState([]);
 
   const appProps: AppContextData = {
     location,
     setLocation,
+    wishes,
+    setWishes,
   };
   return (
     <HelmetProvider>
