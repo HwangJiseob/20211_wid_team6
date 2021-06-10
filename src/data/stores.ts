@@ -1,15 +1,15 @@
 import { sinchon } from "./locations";
 
-export const bakeries: Array<Store> = [
+export const florists: Array<Store> = [
   {
-    name: "스노우폭스",
+    name: "라벨플레르",
     id: "1464f404",
-    path: "/stores/스노우폭스",
-    address: "서울 서대문구 연세로 19",
+    path: "/stores/라벨플레르",
+    address: "서울 서대문구 연세로 9길 10",
     coords: [37.5573962853884, 126.936723922634],
     location: sinchon,
     hour: ["08:30", "22:00"],
-    sector: "bakery",
+    sector: "florist",
   },
   {
     name: "르망마지끄",
@@ -18,28 +18,28 @@ export const bakeries: Array<Store> = [
     address: "서울 서대문구 연세로 156",
     location: sinchon,
     hour: ["08:30", "22:00"],
-    sector: "bakery",
+    sector: "florist",
   },
   {
-    name: "파리바게뜨",
+    name: "플라워타운",
     id: "615cf958",
-    path: "/stores/파리바게뜨",
+    path: "/stores/플라워타운",
     address: "서울 서대문구 연세로 156",
     location: sinchon,
     hour: ["08:30", "22:00"],
-    sector: "bakery",
+    sector: "florist",
   },
   {
-    name: "동네빵집",
+    name: "원모타임",
     id: "a8bef084",
-    path: "/stores/동네빵집",
+    path: "/stores/원모타임",
     address: "서울 서대문구 연세로 156",
     location: sinchon,
     hour: ["08:30", "22:00"],
-    sector: "bakery",
+    sector: "florist",
   },
 ];
 
-const stores = [...bakeries];
+const stores = [...florists];
 
 export default stores;

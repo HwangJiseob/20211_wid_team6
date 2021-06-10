@@ -38,7 +38,7 @@ export const products: Product[] = [
 
 export const flowers = [
   {
-    name: "장미",
+    name: "자나 장미",
     price: 2_500,
   },
   {
@@ -50,16 +50,28 @@ export const flowers = [
     price: 2_500,
   },
   {
-    name: "해바라기",
+    name: "빅토리아 장미",
     price: 2_000,
   },
   {
-    name: "러넌큘러스",
+    name: "옥시페탈룸",
     price: 1_500,
   },
   {
-    name: "델피늄",
+    name: "글라디올러스",
     price: 3_000,
+  },
+  {
+    name: "퀘스트 장미",
+    price: 3_000,
+  },
+  {
+    name: "사루비아",
+    price: 2_000,
+  },
+  {
+    name: "해바라기",
+    price: 2_500,
   },
   {
     name: "옥시",
@@ -68,10 +80,10 @@ export const flowers = [
 ];
 
 export const editions = [
-  { name: "해바라기 정원", price: 50_000, dicsount: 10 },
-  { name: "작약", price: 25_900, dicsount: 10 },
-  { name: "파랑새", price: 56_900, dicsount: 0 },
-  { name: "코랄빛 카네이션", price: 56_900, dicsount: 0 },
+  { name: "자몽 튤립 에디션", price: 39_800, dicsount: 10 },
+  { name: "노란 장미 에디션", price: 25_900, dicsount: 10 },
+  { name: "파랑새 에디션", price: 56_900, dicsount: 0 },
+  { name: "코랄빛 에디션", price: 56_900, dicsount: 0 },
 ];
 
 export default flowers;

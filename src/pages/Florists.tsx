@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 import { css } from "@emotion/react";
 
 import { FilterSVG, HeartSVG } from "@assets";
-import { bakeries } from "@data/stores";
+import { florists } from "@data/stores";
 import { AppContext } from "@libs/hooks";
 import { defaultBreakpoint } from "@libs/config";
 
 const Florists = () => {
   const { location }: any = React.useContext(AppContext);
-  const stores = bakeries.filter(
-    (bakery) => bakery.location.name === location.name,
+  const stores = florists.filter(
+    (florist) => florist.location.name === location.name,
   );
   return (
     <div>

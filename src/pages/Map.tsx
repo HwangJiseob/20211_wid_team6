@@ -10,7 +10,7 @@ import { defaultBreakpoint } from "@libs/config";
 import { SearchSVG, ArrowRightSVG, InvertedTriangle } from "@assets";
 import IconButton from "@components/IconButton";
 import { LocationsPopup } from "@components/popups";
-import { bakeries } from "@data/stores";
+import { florists } from "@data/stores";
 
 const { kakao }: any = window;
 
@@ -49,7 +49,7 @@ const searchSVG = css`
 const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
   const history = useHistory();
   const { location }: any = React.useContext(AppContext);
-  const stores = bakeries.filter(
+  const stores = florists.filter(
     (bakery) => bakery.location.name === location.name,
   );
   const { theme }: any = useTheme();
