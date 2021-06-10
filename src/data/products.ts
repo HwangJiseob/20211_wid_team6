@@ -41,13 +41,6 @@ export const products: Product[] = [
   },
 ];
 
-interface Flower {
-  name: string;
-  price: number;
-  order: number;
-  imgSrc?: string;
-}
-
 export const flowers: Flower[] = [
   {
     name: "자나 장미",

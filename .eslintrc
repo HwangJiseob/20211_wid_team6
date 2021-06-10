@@ -55,6 +55,7 @@
       "files": ["src/libs/hooks.ts"],
       "rules": {
         "react-hooks/rules-of-hooks": 0
-      }}
+      }
+    }
   ]
 }

@@ -1,16 +1,55 @@
 import React from "react";
 import styled from "@emotion/styled";
-// import { css } from "@emotion/react";
+import { keyframes, useTheme } from "@emotion/react";
 import { useHistory } from "react-router-dom";
 
 import { defaultBreakpoint } from "@libs/config";
 
 const { PUBLIC_URL } = process.env;
 
+const removeAnimation = keyframes`
+  from {
+  }
+  to {
+    opacity: 0;
+  }
+`;
+
+interface StyledProps {
+  children?: any;
+  theme: string;
+}
+
+const Curtain = styled.div<StyledProps>`
+  animation: ${removeAnimation};
+  animation-duration: 0.5s;
+  animation-delay: 0.2s;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: ${(props: StyledProps) =>
+    props.theme === "light" ? "white" : "#181818"};
+  z-index: 400;
+`;
+
 const Home = () => {
+  const [initial, setInitial] = React.useState(true);
+  const { theme }: any = useTheme();
+
+  React.useEffect(() => {
+    if (initial) {
+      setTimeout(() => {
+        setInitial(false);
+      }, 400);
+    }
+  }, []);
+
   const history = useHistory();
   return (
     <Container>
+      {initial && <Curtain theme={theme} />}
       <Section1>
         <BannerButton
           onClick={() => history.push("/florists")}

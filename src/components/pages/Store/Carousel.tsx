@@ -1,47 +1,71 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+
 import { defaultBreakpoint } from "@libs/config";
+import "swiper/swiper-bundle.min.css";
+import "./carousel.css";
 
 const { PUBLIC_URL } = process.env;
 
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
 const Carousel = () => {
-  const images = ["1", "2", "3"];
+  const [popup, setPopup] = React.useState(false);
+  const images = [
+    "3_0_대표이미지1.jpg",
+    "3_0_대표이미지2.jpg",
+    "3_0_대표이미지3.jpg",
+  ];
 
   return (
     <Wrapper>
-      {/* <div
-        css={css`
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background: white;
-          opacity: 60%;
-        `}
-      /> */}
-      <img
-        src={`${PUBLIC_URL}/images/3_0_대표이미지1.jpg`}
-        alt="슬라이드 이미지1"
-        css={css`
-          width: 100%;
-          object-fit: contain;
-        `}
-      />
-      <Buttons>
-        {images.map((image) => (
-          <div
-            key={image}
-            css={css`
-              width: 16px;
-              height: 16px;
-              border-radius: 8px;
-              background: #7e7e7e;
-              opacity: 50%;
-            `}
-          />
+      <Swiper
+        spaceBetween={0}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+      >
+        {images.map((imgSrc, index) => (
+          <SwiperSlide key={imgSrc} onClick={() => setPopup(!popup)}>
+            <img
+              src={`${PUBLIC_URL}/images/${imgSrc}`}
+              alt={`슬라이드 이미지1${index}`}
+              css={css`
+                width: 100%;
+                max-height: 1200px;
+                object-fit: contain;
+              `}
+            />
+          </SwiperSlide>
         ))}
-      </Buttons>
+      </Swiper>
+      {popup && (
+        <ImagePopup onClick={() => setPopup(!popup)}>
+          <Swiper
+            spaceBetween={0}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+          >
+            {images.map((imgSrc, index) => (
+              <SwiperSlide key={imgSrc} onClick={() => setPopup(!popup)}>
+                <img
+                  src={`${PUBLIC_URL}/images/${imgSrc}`}
+                  alt={`슬라이드 이미지1${index}`}
+                  css={css`
+                    width: 100%;
+                    max-height: 1200px;
+                    object-fit: contain;
+                  `}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </ImagePopup>
+      )}
     </Wrapper>
   );
 };
@@ -58,24 +82,19 @@ const Wrapper = styled.div`
   }
 `;
 
-const Buttons = styled.ul`
-  all: unset;
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 0;
-  transform: translate(0, -100%);
-  width: 240px;
+const ImagePopup = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  overflow: hidden !important;
+  background: black;
 
-  div:first-of-type {
-    opacity: 90%;
-  }
-  ${defaultBreakpoint} {
-    position: absolute;
-    top: calc(50vh - 30px);
-    left: 50%;
-    margin: 0;
-    transform: translate(-50%, -50%);
-    width: 50%;
+  .swiper-slide {
+    display: grid;
+    place-items: center;
   }
 `;
 

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
@@ -6,9 +8,10 @@ import { useHistory } from "react-router-dom";
 import { defaultBreakpoint } from "@libs/config";
 import { flowers } from "@data/products";
 import { formatNumber } from "@libs/functions";
-import { AppContext } from "@libs/hooks";
+import { AppContext, OptionContext } from "@libs/hooks";
 import { FilterSVG } from "@assets";
 import Carousel from "./pages/Store/Carousel";
+import ImagePopup from "./pages/Product/ImagePopup";
 
 const { PUBLIC_URL } = process.env;
 
@@ -17,6 +20,7 @@ const Product = (props: ProductProps) => {
   const { wishes, setWishes }: any = React.useContext(AppContext);
   const { product } = props;
   const [filter, setFilter] = React.useState("order");
+  const [popup, setPopup] = React.useState(-1);
   const [options, setOptions] = React.useState(
     flowers.map((flower) => {
       return { ...flower, num: 0 };
@@ -41,23 +45,21 @@ const Product = (props: ProductProps) => {
         target.sort((A, B) => {
           return A.order - B.order;
         });
-        setOptions(target);
         break;
       case "ascendant":
         target.sort((A, B) => {
           return A.price - B.price;
         });
-        setOptions(target);
         break;
       case "descendant":
         target.sort((A, B) => {
           return B.price - A.price;
         });
-        setOptions(target);
         break;
       default:
         break;
     }
+    setOptions(target);
     setFilter(standard);
     return true;
   };
@@ -96,153 +98,166 @@ const Product = (props: ProductProps) => {
   };
 
   return (
-    <Wrapper>
-      <Phrase>
-        <div
-          css={css`
-            font-size: 27px;
-            color: #262627;
-          `}
-        >
-          {product.name}
-        </div>
-        <div
-          css={css`
-            font-size: 14px;
-            color: black;
-          `}
-        >
-          선택한 꽃 이외에 적절한 꽃들을 조합하여 다발로 제작해 드립니다.
-        </div>
-      </Phrase>
-      <Carousel />
-      <Wrapper2>
-        <Container>
-          <div
-            css={css`
-              display: flex;
-              justify-content: space-between;
-            `}
-          >
-            <div>
+    <OptionContext.Provider value={options}>
+      <Wrapper>
+        {popup < 0 && (
+          <>
+            <Phrase>
               <div
                 css={css`
-                  font-size: 20px;
-                  color: #727c8b;
-                  font-weight: bold;
+                  font-size: 27px;
+                  color: #262627;
                 `}
               >
-                꽃 선택
+                {product.name}
               </div>
               <div
                 css={css`
-                  color: #7e7e7e;
+                  font-size: 14px;
+                  color: black;
                 `}
               >
-                필수 1송이, 최대 {product.limit}송이 선택
+                선택한 꽃 이외에 적절한 꽃들을 조합하여 다발로 제작해 드립니다.
               </div>
-            </div>
-            <div
-              css={css`
-                font-size: 14px;
-                color: #7e7e7e;
-              `}
-            >
-              <label htmlFor="select2">
-                <select
-                  id="select2"
-                  value={filter}
-                  onChange={filterate}
+            </Phrase>
+            <Carousel />
+            <Wrapper2>
+              <Container>
+                <div
                   css={css`
-                    appearance: none;
-                    font-size: 18px;
-                    border: none;
-                    :focus {
-                      outline: none;
-                    }
+                    display: flex;
+                    justify-content: space-between;
                   `}
                 >
-                  <option value="order">추천순</option>
-                  <option value="descendant">고가순</option>
-                  <option value="ascendant">저가순</option>
-                </select>
-              </label>
-              <FilterSVG />
-            </div>
-          </div>
-          <Options>
-            {options.map((option) => (
-              <Option key={option.name}>
-                <ExampleImage
-                  src={`${PUBLIC_URL}/images/4_${option.order}.jpg`}
-                  alt={`${option.name} 꽃다발 이미지`}
-                />
-                <div style={{ padding: "0 0 0 10px" }}>
-                  <div>{option.name}</div>
+                  <div>
+                    <div
+                      css={css`
+                        font-size: 20px;
+                        color: #727c8b;
+                        font-weight: bold;
+                      `}
+                    >
+                      꽃 선택
+                    </div>
+                    <div
+                      css={css`
+                        color: #7e7e7e;
+                      `}
+                    >
+                      필수 1송이, 최대 {product.limit}송이 선택
+                    </div>
+                  </div>
                   <div
                     css={css`
-                      color: #898989;
+                      font-size: 14px;
+                      color: #7e7e7e;
                     `}
                   >
-                    +{option.price}원
+                    <label htmlFor="select2">
+                      <select
+                        id="select2"
+                        value={filter}
+                        onChange={filterate}
+                        css={css`
+                          appearance: none;
+                          font-size: 18px;
+                          border: none;
+                          :focus {
+                            outline: none;
+                          }
+                        `}
+                      >
+                        <option value="order">추천순</option>
+                        <option value="descendant">고가순</option>
+                        <option value="ascendant">저가순</option>
+                      </select>
+                    </label>
+                    <FilterSVG />
                   </div>
                 </div>
-                <PlusMinus>
-                  <Button onClick={() => deduct(option.name)}>-</Button>
-                  <div>{option.num} 송이</div>
-                  <Button
+                <Options>
+                  {options.map((option, index) => (
+                    <Option key={option.name}>
+                      <ExampleImage
+                        src={`${PUBLIC_URL}/images/4_${option.order}.jpg`}
+                        alt={`${option.name} 꽃다발 이미지`}
+                        onClick={() => setPopup(index)}
+                      />
+                      <div style={{ padding: "0 0 0 10px" }}>
+                        <div>{option.name}</div>
+                        <div
+                          css={css`
+                            color: #898989;
+                          `}
+                        >
+                          +{option.price}원
+                        </div>
+                      </div>
+                      <PlusMinus>
+                        <Button onClick={() => deduct(option.name)}>-</Button>
+                        <div>{option.num} 송이</div>
+                        <Button
+                          onClick={() => {
+                            add(option.name);
+                          }}
+                        >
+                          +
+                        </Button>
+                      </PlusMinus>
+                    </Option>
+                  ))}
+                </Options>
+                <Banner>
+                  <Tab>
+                    <div>선택 개수</div>
+                    <div>{numSum}개</div>
+                  </Tab>
+                  <Tab>
+                    <div>총 금액</div>
+                    <div>{formatNumber(priceSum)}원</div>
+                  </Tab>
+                  <CartButton
                     onClick={() => {
-                      add(option.name);
+                      if (numSum > 0) {
+                        setWishes([
+                          ...wishes,
+                          {
+                            product,
+                            options,
+                          },
+                        ]);
+                        history.push("/wishlist");
+                      }
+                      return null;
                     }}
                   >
-                    +
-                  </Button>
-                </PlusMinus>
-              </Option>
-            ))}
-          </Options>
-          <Banner>
-            <Tab>
-              <div>선택 개수</div>
-              <div>{numSum}개</div>
-            </Tab>
-            <Tab>
-              <div>총 금액</div>
-              <div>{formatNumber(priceSum)}원</div>
-            </Tab>
-            <CartButton
-              onClick={() => {
-                if (numSum > 0) {
-                  setWishes([
-                    ...wishes,
-                    {
-                      product,
-                      options,
-                    },
-                  ]);
-                  history.push("/wishlist");
-                }
-                return null;
-              }}
-            >
-              {numSum === 0 ? "선택해주세요" : "장바구니에 담기"}
-            </CartButton>
-          </Banner>
-          <div
-            id="banner"
-            css={css`
-              position: fixed;
-              width: 100%;
-              height: 30vh;
-              bottom: 0;
-              left: 0;
-              background: white;
-              z-index: 1;
-            `}
-          />
-        </Container>
-      </Wrapper2>
-    </Wrapper>
+                    {numSum === 0 ? "선택해주세요" : "장바구니에 담기"}
+                  </CartButton>
+                </Banner>
+                <div
+                  id="banner"
+                  css={css`
+                    position: fixed;
+                    width: 100%;
+                    height: 30vh;
+                    bottom: 0;
+                    left: 0;
+                    background: white;
+                    z-index: 1;
+                  `}
+                />
+              </Container>
+            </Wrapper2>
+          </>
+        )}
+        <div
+          onClick={() => setPopup(-1)}
+          style={{ display: popup < 0 ? "none" : "block" }}
+        >
+          <ImagePopup popup={popup} />
+        </div>
+      </Wrapper>
+    </OptionContext.Provider>
   );
 };
 
@@ -256,8 +271,9 @@ const Phrase = styled.div`
   place-items: center;
   gap: 16px;
   grid-template-rows: 1fr 1fr;
-  z-index: 1;
+  z-index: 10;
   padding: 10px;
+  pointer-events: none;
   ::after {
     width: 100%;
     height: 100%;
@@ -359,6 +375,8 @@ const CartButton = styled(Button)`
   border: 1px solid #707070;
   border-radius: 10px;
   margin: 10px 0 0 0;
+  font-size: 20px;
+  font-weight: bold;
   height: 60px;
   color: #727c8b;
 `;

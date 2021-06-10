@@ -91,3 +91,10 @@ declare interface ProductProps {
   children?: ReactProps;
   product: Product;
 }
+
+declare interface Flower {
+  name: string;
+  price: number;
+  order: number;
+  imgSrc?: string;
+}

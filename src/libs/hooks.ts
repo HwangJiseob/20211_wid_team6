@@ -30,6 +30,8 @@ export const showPopupCallback = ({ setClicked, setPopup }: ShowPopupProps) => {
 
 export const AppContext = React.createContext({});
 
+export const OptionContext: React.Context<any[]> = React.createContext([""]);
+
 const hooks = {
   preventTransition,
   switchTheme,

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+import { css, keyframes, useTheme } from "@emotion/react";
 import { useHistory } from "react-router-dom";
 
 import { AppContext } from "@libs/hooks";
@@ -214,14 +214,55 @@ const Step2 = (props: StepProps) => {
   );
 };
 
+const removeAnimation = keyframes`
+  from {
+  }
+  to {
+    opacity: 0;
+  }
+`;
+
+interface StyledProps {
+  children?: any;
+  theme: string;
+}
+
+const Curtain = styled.div<StyledProps>`
+  animation: ${removeAnimation};
+  animation-duration: 0.5s;
+  animation-delay: 0.2s;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: ${(props: StyledProps) =>
+    props.theme === "light" ? "whi1te" : "#181818"};
+  z-index: 400;
+`;
+
 const Step3 = () => {
   const history = useHistory();
+  const [initial, setInitial] = React.useState(true);
+  const { theme }: any = useTheme();
   const { bills }: any = React.useContext(AppContext);
   const [bill] = bills;
   const [target] = bill.products;
   const options = target.options.filter((option: any) => option.num > 0);
+
+  console.log(initial);
+
+  React.useEffect(() => {
+    if (initial) {
+      setTimeout(() => {
+        setInitial(false);
+      }, 400);
+    }
+  }, [initial]);
+
   return (
     <Wrapper>
+      {initial && <Curtain theme={theme} />}
       <div>
         <div
           css={css`
