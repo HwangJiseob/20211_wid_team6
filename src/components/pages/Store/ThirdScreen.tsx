@@ -34,6 +34,7 @@ const ThirdScreen = (props: StoreProps) => {
                   <Item>
                     <ExampleImage
                       src={`${PUBLIC_URL}/images/${product.imgSrc}`}
+                      alt={`${product.name} 이미지`}
                     />
                     <RightSide>
                       <span>{product.name}</span>

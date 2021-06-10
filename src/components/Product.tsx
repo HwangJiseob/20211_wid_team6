@@ -175,7 +175,7 @@ const Product = (props: ProductProps) => {
               <Option key={option.name}>
                 <ExampleImage
                   src={`${PUBLIC_URL}/images/4_${option.order}.jpg`}
-                  alt="test"
+                  alt={`${option.name} 꽃다발 이미지`}
                 />
                 <div style={{ padding: "0 0 0 10px" }}>
                   <div>{option.name}</div>

@@ -102,7 +102,7 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
               >
                 <ExampleImage
                   src={`${PUBLIC_URL}/images/${card.imgSrc}`}
-                  alt="test"
+                  alt={`${card.name} 대표 이미지`}
                 />
                 <Descriptions>
                   <div>{card.name}</div>

@@ -22,7 +22,7 @@ const Carousel = () => {
       />
       <img
         src={`${PUBLIC_URL}/images/3_0_대표이미지1.jpg`}
-        alt="대표이미지1"
+        alt="슬라이드 이미지1"
         css={css`
           width: 100%;
           object-fit: contain;

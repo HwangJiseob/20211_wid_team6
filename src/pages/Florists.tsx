@@ -119,7 +119,7 @@ const Card = ({ store }: StoreProps) => {
           css={css`
             width: 100%;
           `}
-          alt="test"
+          alt={`${store.name} 대표 이미지`}
         />
         <div
           css={css`

@@ -20,7 +20,7 @@ const SecondScreen = () => {
               <Item key={edition.name}>
                 <ExampleImage
                   src={`${PUBLIC_URL}/images/${edition.imgSrc}`}
-                  alt="test"
+                  alt={`${edition.name} 대표이미지`}
                 />
                 {edition.name}
                 <div>

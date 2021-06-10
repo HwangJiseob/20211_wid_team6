@@ -28,15 +28,6 @@ const Home = () => {
           }}
         >
           케이크
-          {/* <img
-            src={`${PUBLIC_URL}/images/1_flower.jpg`}
-            alt="하하"
-            css={css`
-              width: inherit;
-              object-fit: scale-down;
-              border-radius: 40px;
-            `}
-          /> */}
         </BannerButton>
       </Section1>
     </Container>
