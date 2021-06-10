@@ -131,7 +131,7 @@ const Step2 = (props: StepProps) => {
     setBills([
       ...bills,
       {
-        timee: new Date(),
+        time: new Date(),
         price: prices.reduce((acc: any, cur: any) => acc + cur),
         requirements,
         pickupTime,
@@ -174,25 +174,94 @@ const Step2 = (props: StepProps) => {
 
 const Step3 = () => {
   const history = useHistory();
+  const { bills }: any = React.useContext(AppContext);
+  console.log(bills);
+  const [bill] = bills;
+  const [target] = bill.products;
+  const options = target.options.filter((option: any) => option.num > 0);
   return (
     <Wrapper>
       <div>
         <div
           css={css`
             font-size: 18px;
+            color: #727c8b;
             font-weight: bold;
             text-align: center;
-            margin: 10vh 0;
+            margin: 5vh 0;
           `}
         >
           주문이 접수되었습니다
         </div>
         <div
           css={css`
-            text-align: center;
+            display: flex;
+            justify-content: center;
           `}
         >
-          주문이 확정되면 문자나 카톡 알림이 갑니다
+          <div
+            css={css`
+              width: 300px;
+              color: #7e7e7e;
+              text-align: center;
+              padding-bottom: 30px;
+              border-bottom: 1px solid#D5D5D5;
+            `}
+          >
+            확정되면 문자나 카톡으로 알려드릴게요
+          </div>
+        </div>
+      </div>
+      <div
+        css={css`
+          display: flex;
+          justify-content: center;
+        `}
+      >
+        <div
+          css={css`
+            width: 300px;
+            min-height: 30vh;
+          `}
+        >
+          <div
+            css={css`
+              font-size: 20px;
+              font-weight: bold;
+              color: #727c8b;
+            `}
+          >
+            라벨플레르
+          </div>
+          <div
+            css={css`
+              color: #535353;
+            `}
+          >
+            {target.product.name}
+          </div>
+          <div
+            css={css`
+              color: #898989;
+            `}
+          >
+            <div>기본: {formatNumber(target.product.price)}원</div>
+            <OptionBoard>
+              <div>선택: </div>
+              <Options>
+                {options.map((option: any) => {
+                  return (
+                    <div key={option.name}>
+                      <span>{option.name} </span>
+                      <span>(+{formatNumber(option.price)}원) </span>
+                    </div>
+                  );
+                })}
+              </Options>
+            </OptionBoard>
+            <div>기타 요청사항: {bill.requirements}</div>
+            <div>픽업시간: {bill.pickupTime}</div>
+          </div>
         </div>
       </div>
       <div
@@ -276,6 +345,7 @@ const PlusMinus = styled.div`
 
 const Button = styled.button`
   all: unset;
+  color: #7e7e7e;
 `;
 
 const PayButton = styled(Button)`
@@ -285,7 +355,7 @@ const PayButton = styled(Button)`
   width: 100%;
   min-height: 50px;
   text-align: center;
-  border: 1px solid #e7e7e7;
+  border: 1px solid #707070;
   margin: auto 0 0 0;
 `;
 
