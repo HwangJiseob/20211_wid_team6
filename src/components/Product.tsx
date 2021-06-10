@@ -97,6 +97,12 @@ const Product = (props: ProductProps) => {
     return null;
   };
 
+  const images = [
+    "4_대표이미지1.jpg",
+    "4_대표이미지2.jpg",
+    "4_대표이미지3.jpg",
+  ];
+
   return (
     <OptionContext.Provider value={options}>
       <Wrapper>
@@ -120,7 +126,7 @@ const Product = (props: ProductProps) => {
                 선택한 꽃 이외에 적절한 꽃들을 조합하여 다발로 제작해 드립니다.
               </div>
             </Phrase>
-            <Carousel />
+            <Carousel images={images} />
             <Wrapper2>
               <Container>
                 <div

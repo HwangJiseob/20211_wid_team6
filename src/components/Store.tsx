@@ -20,6 +20,12 @@ const Store = ({ store }: StoreProps) => {
   const history = useHistory();
   const [selected, setSelected] = React.useState("메뉴");
 
+  const images = [
+    "3_0_대표이미지1.jpg",
+    "3_0_대표이미지2.jpg",
+    "3_0_대표이미지3.jpg",
+  ];
+
   return (
     <Wrapper>
       <CartButton
@@ -30,7 +36,7 @@ const Store = ({ store }: StoreProps) => {
         <CartSVG width={30} height={30} />
       </CartButton>
       <FirstScreen>
-        <Carousel />
+        <Carousel images={images} />
         <Introduction store={store} />
         <Menu theme={theme} selected={selected} setSelected={setSelected} />
       </FirstScreen>

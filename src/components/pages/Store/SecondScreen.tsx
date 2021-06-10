@@ -72,6 +72,7 @@ const Contents = styled.div`
     display: grid;
     grid-template-rows: 72px auto;
     height: 90%;
+    color: #262627;
   }
 `;
 

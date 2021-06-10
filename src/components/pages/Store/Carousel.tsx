@@ -14,13 +14,13 @@ const { PUBLIC_URL } = process.env;
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
-const Carousel = () => {
-  const [popup, setPopup] = React.useState(false);
-  const images = [
-    "3_0_대표이미지1.jpg",
-    "3_0_대표이미지2.jpg",
-    "3_0_대표이미지3.jpg",
-  ];
+interface CarouselProps {
+  children?: any;
+  images: string[];
+}
+
+const Carousel = ({ images }: CarouselProps) => {
+  const [popup, setPopup] = React.useState(-1);
 
   return (
     <Wrapper>
@@ -30,7 +30,7 @@ const Carousel = () => {
         pagination={{ clickable: true }}
       >
         {images.map((imgSrc, index) => (
-          <SwiperSlide key={imgSrc} onClick={() => setPopup(!popup)}>
+          <SwiperSlide key={imgSrc} onClick={() => setPopup(index)}>
             <img
               src={`${PUBLIC_URL}/images/${imgSrc}`}
               alt={`슬라이드 이미지1${index}`}
@@ -43,18 +43,19 @@ const Carousel = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      {popup && (
-        <ImagePopup onClick={() => setPopup(!popup)}>
+      {popup > -1 && (
+        <ImagePopup onClick={() => setPopup(-1)}>
           <Swiper
+            initialSlide={popup}
             spaceBetween={0}
             slidesPerView={1}
             pagination={{ clickable: true }}
           >
             {images.map((imgSrc, index) => (
-              <SwiperSlide key={imgSrc} onClick={() => setPopup(!popup)}>
+              <SwiperSlide key={imgSrc} onClick={() => setPopup(-1)}>
                 <img
                   src={`${PUBLIC_URL}/images/${imgSrc}`}
-                  alt={`슬라이드 이미지1${index}`}
+                  alt={`슬라이드 이미지${index}`}
                   css={css`
                     width: 100%;
                     max-height: 1200px;
