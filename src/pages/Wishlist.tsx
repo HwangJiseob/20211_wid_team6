@@ -7,6 +7,8 @@ import { AppContext } from "@libs/hooks";
 import { formatNumber } from "@libs/functions";
 import { HomeSVG } from "@assets";
 
+const { PUBLIC_URL } = process.env;
+
 interface StepProps {
   children?: any;
   step: number;
@@ -223,11 +225,26 @@ const Step3 = () => {
       <div>
         <div
           css={css`
+            display: grid;
+            place-items: center;
+          `}
+        >
+          <img
+            src={`${PUBLIC_URL}/favicon.ico`}
+            alt="logo"
+            css={css`
+              width: 50px;
+              height: 50px;
+            `}
+          />
+        </div>
+        <div
+          css={css`
             font-size: 18px;
             color: #727c8b;
             font-weight: bold;
             text-align: center;
-            margin: 5vh 0;
+            margin: 3vh 0;
           `}
         >
           주문이 접수되었습니다
@@ -243,7 +260,7 @@ const Step3 = () => {
               width: 300px;
               color: #7e7e7e;
               text-align: center;
-              padding-bottom: 30px;
+              padding-bottom: 20px;
               border-bottom: 1px solid#D5D5D5;
             `}
           >

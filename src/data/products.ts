@@ -10,7 +10,7 @@ export const products: Product[] = [
   {
     name: "S 꽃다발",
     path: "/products/0002",
-    limit: 2,
+    limit: 5,
     price: 6_000,
     storeId: "1464f404",
     imgSrc: "3_6_S.jpg",

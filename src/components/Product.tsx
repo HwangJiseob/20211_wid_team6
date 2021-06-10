@@ -228,6 +228,18 @@ const Product = (props: ProductProps) => {
               {numSum === 0 ? "선택해주세요" : "장바구니에 담기"}
             </CartButton>
           </Banner>
+          <div
+            id="banner"
+            css={css`
+              position: fixed;
+              width: 100%;
+              height: 30vh;
+              bottom: 0;
+              left: 0;
+              background: white;
+              z-index: 1;
+            `}
+          />
         </Container>
       </Wrapper2>
     </Wrapper>
@@ -245,6 +257,18 @@ const Phrase = styled.div`
   gap: 16px;
   grid-template-rows: 1fr 1fr;
   z-index: 1;
+  padding: 10px;
+  ::after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 75%;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -264,7 +288,7 @@ const Wrapper2 = styled.div`
 `;
 
 const Container = styled.div`
-  padding: 20px 0;
+  padding: 20px 0 0 0;
   width: 90vw;
 `;
 
@@ -307,12 +331,16 @@ const Button = styled.button`
 `;
 
 const Banner = styled.div`
+  position: sticky;
+  bottom: 0;
   display: flex;
+  /* box-sizing: border-box; */
   border-top: 1px solid #e7e7e7;
-  padding: 20px 0 0 0;
+  padding: 20px 0;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  z-index: 2;
 `;
 
 const Tab = styled.div`
