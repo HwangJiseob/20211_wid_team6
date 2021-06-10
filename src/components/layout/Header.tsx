@@ -14,7 +14,7 @@ const Header = () => {
       <Container>
         <MobileHeader />
         <Logo>
-          <NavLink to={home.path}>💐꽃과 케이크🎂</NavLink>
+          <NavLink to={home.path}>데이모먼트</NavLink>
         </Logo>
         <Navigator />
       </Container>

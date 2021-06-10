@@ -16,7 +16,11 @@ interface StepProps {
 const step2Input = css`
   all: unset;
   font-size: 16px;
-  height: 50px;
+  height: 60px;
+  text-indent: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  border: 1px solid #b4b4b4;
 `;
 
 const WishList = () => {
@@ -57,15 +61,31 @@ const Step1 = (props: StepProps) => {
       ) : (
         <>
           <div>
-            <div>스노우 폭스</div>
+            <div
+              css={css`
+                font-family: Montserrat;
+                font-size: 20px;
+                color: #727c8b;
+                font-weight: bold;
+                margin-bottom: 15px;
+              `}
+            >
+              라벨플레르
+            </div>
             <Products>
               {wishes.map((wish: any) => {
                 const { product, options }: any = wish;
                 const targets = options.filter((option: any) => option.num > 0);
                 return (
-                  <Product key={product.name}>
+                  <Product key={`${product.name}`}>
                     <div>{product.name}</div>
-                    <div>기본: {product.price}</div>
+                    <div
+                      css={css`
+                        color: #535353;
+                      `}
+                    >
+                      기본: {product.price}
+                    </div>
                     <OptionBoard>
                       <div>세부: </div>
                       <Options>
@@ -74,7 +94,7 @@ const Step1 = (props: StepProps) => {
                             <Option>
                               <div key={target.name}>
                                 <span>{target.name} </span>
-                                <span>({formatNumber(target.price)}원) </span>
+                                <span>(+{formatNumber(target.price)}원) </span>
                               </div>
                               <PlusMinus>
                                 <Button>-</Button>
@@ -92,7 +112,13 @@ const Step1 = (props: StepProps) => {
             </Products>
             <Tab>
               <div>총 금액</div>
-              <div>{formatNumber(resultPrice)}원</div>
+              <div
+                css={css`
+                  font-size: 29px;
+                `}
+              >
+                {formatNumber(resultPrice)}원
+              </div>
             </Tab>
           </div>
           <PayButton
@@ -145,7 +171,14 @@ const Step2 = (props: StepProps) => {
     <Wrapper>
       <div>
         <InputContainer>
-          기타 요청사항
+          <span
+            css={css`
+              color: #727c8b;
+              font-weight: bold;
+            `}
+          >
+            기타 요청사항
+          </span>
           <input
             value={requirements}
             onChange={(e: React.FormEvent<HTMLInputElement>) => {
@@ -156,7 +189,14 @@ const Step2 = (props: StepProps) => {
           />
         </InputContainer>
         <InputContainer>
-          픽업시간
+          <span
+            css={css`
+              color: #727c8b;
+              font-weight: bold;
+            `}
+          >
+            픽업시간
+          </span>
           <input
             value={pickupTime}
             onChange={(e: React.FormEvent<HTMLInputElement>) => {
@@ -175,7 +215,6 @@ const Step2 = (props: StepProps) => {
 const Step3 = () => {
   const history = useHistory();
   const { bills }: any = React.useContext(AppContext);
-  console.log(bills);
   const [bill] = bills;
   const [target] = bill.products;
   const options = target.options.filter((option: any) => option.num > 0);
@@ -283,10 +322,11 @@ const Step3 = () => {
 
 const InputContainer = styled.div`
   width: 100%;
-  font-size: 24px;
+  font-size: 20px;
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid #e7e7e7;
+  padding-bottom: 20px;
   margin-bottom: 20px;
 `;
 
@@ -318,6 +358,7 @@ const Product = styled.li`
 
 const OptionBoard = styled.div`
   display: grid;
+  color: #898989;
   grid-template-columns: 40px auto;
 `;
 
@@ -327,7 +368,7 @@ const Options = styled.div`
 
 const Option = styled.div`
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
+  grid-template-columns: 3fr 1fr;
   margin: 0 0 5px 0;
 `;
 
@@ -335,8 +376,9 @@ const PlusMinus = styled.div`
   height: 20px;
   width: 100%;
   max-width: 200px;
-  border-radius: 10px;
-  border: 1px solid #e7e7e7;
+  border-radius: 5px;
+  border: 1px solid #707070;
+  color: #535353;
   align-self: center;
   display: flex;
   align-items: center;
@@ -345,7 +387,6 @@ const PlusMinus = styled.div`
 
 const Button = styled.button`
   all: unset;
-  color: #7e7e7e;
 `;
 
 const PayButton = styled(Button)`
@@ -357,6 +398,7 @@ const PayButton = styled(Button)`
   text-align: center;
   border: 1px solid #707070;
   margin: auto 0 0 0;
+  color: #727c8b;
 `;
 
 const Tab = styled.div`
@@ -365,7 +407,9 @@ const Tab = styled.div`
   font-size: 20px;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
   margin: 15px 0 0 0;
+  color: #727c8b;
 `;
 
 export default WishList;

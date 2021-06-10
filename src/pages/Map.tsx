@@ -12,6 +12,8 @@ import IconButton from "@components/IconButton";
 import { LocationsPopup } from "@components/popups";
 import { florists } from "@data/stores";
 
+const { PUBLIC_URL } = process.env;
+
 const { kakao }: any = window;
 
 const id = "kakaomap";
@@ -98,11 +100,14 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
                 key={card.id}
                 onClick={() => history.push(`/stores/${card.name}`)}
               >
-                <ExampleImage>이미지</ExampleImage>
+                <ExampleImage
+                  src={`${PUBLIC_URL}/images/${card.imgSrc}`}
+                  alt="test"
+                />
                 <Descriptions>
                   <div>{card.name}</div>
                   <div>
-                    후기<div>3개</div>
+                    후기<div>{card.reviews}개</div>
                   </div>
                   <div>
                     별점<div>☆ 4.5</div>
@@ -120,7 +125,7 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
   );
 };
 
-const ExampleImage = styled.div`
+const ExampleImage = styled.img`
   display: grid;
   place-items: center;
   width: 120px;

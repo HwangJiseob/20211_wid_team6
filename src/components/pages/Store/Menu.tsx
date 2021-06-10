@@ -30,11 +30,6 @@ const Menu = ({ theme, selected, setSelected }: MenuProps) => {
       ) : (
         <Button onClick={() => setSelected("리뷰")}>리뷰</Button>
       )}
-      {selected === "~~" ? (
-        <ButtonSelected>~~</ButtonSelected>
-      ) : (
-        <Button onClick={() => setSelected("~~")}>~~</Button>
-      )}
     </Wrapper>
   );
 };
@@ -42,7 +37,7 @@ const Menu = ({ theme, selected, setSelected }: MenuProps) => {
 const Wrapper = styled.div<WrapperProps>`
   height: ${header.mobile_height};
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   place-items: center;
   z-index: 10;
   ${defaultBreakpoint} {
@@ -57,7 +52,7 @@ const Button = styled.button`
   height: 100%;
   display: grid;
   place-items: center;
-  background: #d3d3d3;
+  background: #efefef;
 `;
 const ButtonSelected = styled(Button)`
   background: initial;

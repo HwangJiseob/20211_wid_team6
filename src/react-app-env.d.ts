@@ -53,6 +53,9 @@ declare interface Store {
   sector: "bakery" | "florist";
   location: KakaoLocation;
   coords?: [number, number];
+  likes: number;
+  reviews: number;
+  imgSrc?: string;
 }
 
 declare interface StoreProps {
@@ -81,6 +84,7 @@ declare interface Product {
   limit: number;
   price: number;
   storeId?: string;
+  imgSrc?: string;
 }
 
 declare interface ProductProps {

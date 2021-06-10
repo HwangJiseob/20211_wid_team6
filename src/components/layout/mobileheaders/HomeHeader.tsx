@@ -11,7 +11,7 @@ import { Wrapper } from "./Commons";
 const HomeHeader = () => {
   const history = useHistory();
   const inputContainer = css`
-    background: #b8c1d2;
+    background: rgba(45, 49, 56, 10%);
     border-radius: 18px;
     border: none;
     width: 100%;

@@ -5,7 +5,7 @@ import { AppContext } from "@libs/hooks";
 import { useHistory } from "react-router-dom";
 
 import { switchScrollAvailable } from "@libs/functions";
-import { sinchon, hongdae } from "@data/locations";
+import { locations } from "@data/locations";
 
 const showupAnimation = keyframes`
   from {
@@ -68,25 +68,25 @@ const LocationsPopup = (props: PopupProps) => {
       <PopupContainer clicked={clicked} theme={theme} onClick={removePopup}>
         <PopupHeaders>
           <PopupHeader>즐겨찾기</PopupHeader>
-          <PopupHeader>내 주변</PopupHeader>
+          <PopupHeader>내 근처</PopupHeader>
+          <PopupHeader>서울</PopupHeader>
+          <PopupHeader>경기도</PopupHeader>
+          <PopupHeader>인천</PopupHeader>
         </PopupHeaders>
         <PopupRow>
-          <LocationButton
-            location={location.name}
-            theme={theme}
-            standard="신촌"
-            onClick={() => setLocation(sinchon)}
-          >
-            신촌
-          </LocationButton>
-          <LocationButton
-            location={location.name}
-            theme={theme}
-            standard="홍대"
-            onClick={() => setLocation(hongdae)}
-          >
-            홍대
-          </LocationButton>
+          {locations.map((loc) => {
+            return (
+              <LocationButton
+                location={location.name}
+                theme={theme}
+                key={loc.name}
+                standard={loc.name}
+                onClick={() => setLocation(loc)}
+              >
+                {loc.name}
+              </LocationButton>
+            );
+          })}
         </PopupRow>
       </PopupContainer>
     </PopupWrapper>
@@ -145,6 +145,12 @@ const PopupHeaders = styled.div`
   display: grid;
   grid-template-columns: 100px 100px auto;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  button:nth-of-type(2) {
+    color: #1050d0;
+  }
 `;
 
 const PopupHeader = styled.button`
@@ -176,7 +182,7 @@ const LocationButton = styled.button<LocationButtonProps>`
     return `border: 1.5px solid ${
       props.location === props.standard ? "#E3F2FF" : "#b4b4b4"
     };
-    color: ${props.location === props.standard ? "black" : "#b4b4b4"};
+    color: ${props.location === props.standard ? "black" : "#727C8E"};
     background: ${props.location === props.standard && "#E3F2FF"};`;
   }}
   box-sizing: border-box;

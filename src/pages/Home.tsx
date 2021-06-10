@@ -1,18 +1,43 @@
 import React from "react";
 import styled from "@emotion/styled";
+// import { css } from "@emotion/react";
 import { useHistory } from "react-router-dom";
 
 import { defaultBreakpoint } from "@libs/config";
+
+const { PUBLIC_URL } = process.env;
 
 const Home = () => {
   const history = useHistory();
   return (
     <Container>
       <Section1>
-        <BannerButton onClick={() => history.push("/florists")}>
+        <BannerButton
+          onClick={() => history.push("/florists")}
+          style={{
+            background: `no-repeat center url(${PUBLIC_URL}/images/1_flower.jpg)`,
+            backgroundSize: "cover",
+          }}
+        >
           꽃
         </BannerButton>
-        <BannerButton>케이크</BannerButton>
+        <BannerButton
+          style={{
+            background: `no-repeat center url(${PUBLIC_URL}/images/1_cake.jpg)`,
+            backgroundSize: "cover",
+          }}
+        >
+          케이크
+          {/* <img
+            src={`${PUBLIC_URL}/images/1_flower.jpg`}
+            alt="하하"
+            css={css`
+              width: inherit;
+              object-fit: scale-down;
+              border-radius: 40px;
+            `}
+          /> */}
+        </BannerButton>
       </Section1>
     </Container>
   );
@@ -57,17 +82,23 @@ const Section1 = styled.section`
   }
 `;
 
-const BannerButton = styled.button`
+const BannerButton = styled.div`
   all: unset;
   display: grid;
   place-items: center;
-  width: 100%;
+  width: inherit;
   box-sizing: border-box;
-  border-radius: 40px;
-  background: #bbd7e5;
   color: white;
   font-size: 50px;
+  border-radius: 40px;
   font-weight: bolder;
+  overflow: hidden;
+
+  div {
+    position: absolute;
+    /* left: 50%;
+    transform: translate(-50%, 50%); */
+  }
 `;
 
 export default Home;

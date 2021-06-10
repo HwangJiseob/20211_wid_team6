@@ -4,11 +4,30 @@ import { css } from "@emotion/react";
 
 import { defaultBreakpoint } from "@libs/config";
 
+const { PUBLIC_URL } = process.env;
+
 const Carousel = () => {
   const images = ["1", "2", "3"];
 
   return (
     <Wrapper>
+      <div
+        css={css`
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: white;
+          opacity: 60%;
+        `}
+      />
+      <img
+        src={`${PUBLIC_URL}/images/3_0_대표이미지1.jpg`}
+        alt="대표이미지1"
+        css={css`
+          width: 100%;
+          object-fit: contain;
+        `}
+      />
       <Buttons>
         {images.map((image) => (
           <div
@@ -18,6 +37,7 @@ const Carousel = () => {
               height: 16px;
               border-radius: 8px;
               background: #7e7e7e;
+              opacity: 50%;
             `}
           />
         ))}
@@ -34,7 +54,7 @@ const Wrapper = styled.div`
   justify-content: center;
   height: 33vh;
   ${defaultBreakpoint} {
-    height: 240px;
+    height: 50vh;
   }
 `;
 
@@ -45,9 +65,13 @@ const Buttons = styled.ul`
   margin-bottom: 0;
   transform: translate(0, -100%);
   width: 240px;
+
+  div:first-of-type {
+    opacity: 90%;
+  }
   ${defaultBreakpoint} {
     position: absolute;
-    top: 200px;
+    top: calc(50vh - 30px);
     left: 50%;
     margin: 0;
     transform: translate(-50%, -50%);

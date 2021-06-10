@@ -21,8 +21,12 @@ export default () => {
       color: ${theme === "light" ? "initial" : "#fff"};
       ${transition}
       transition-property: background-color, color;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
-
+    body::-webkit-scrollbar {
+      display: none;
+    }
     code {
       font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
         monospace;

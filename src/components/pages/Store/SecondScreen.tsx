@@ -7,6 +7,7 @@ import { editions } from "@data/products";
 import Screen from "./Screen";
 
 const { header } = layout;
+const { PUBLIC_URL } = process.env;
 
 const SecondScreen = () => {
   return (
@@ -17,7 +18,10 @@ const SecondScreen = () => {
           <Items>
             {editions.map((edition) => (
               <Item key={edition.name}>
-                <ExampleImage />
+                <ExampleImage
+                  src={`${PUBLIC_URL}/images/${edition.imgSrc}`}
+                  alt="test"
+                />
                 {edition.name}
                 <div>
                   {edition.dicsount > 0 && (
@@ -51,9 +55,11 @@ const Container = styled.div`
 
 const Title = styled.h2`
   all: unset;
-  font-size: 24px;
+  font-size: 25px;
   text-indent: 10px;
   padding: 15px 0 0 0;
+  font-weight: bold;
+  color: #727c8b;
 `;
 
 const Contents = styled.div`
@@ -61,7 +67,7 @@ const Contents = styled.div`
   flex-direction: column;
   width: 90%;
   border-radius: 10px;
-  background: #d3d3d3;
+  background: #f7f7f7;
   ${defaultBreakpoint} {
     display: grid;
     grid-template-rows: 72px auto;
@@ -84,7 +90,7 @@ const Items = styled.ul`
   }
 `;
 
-const ExampleImage = styled.div`
+const ExampleImage = styled.img`
   width: 100%;
   height: 360px;
   max-height: 240px;
