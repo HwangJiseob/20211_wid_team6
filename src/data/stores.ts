@@ -29,7 +29,7 @@ export const florists: Array<Store> = [
   {
     name: "라초아플라워",
     id: "615cf958",
-    path: "/stores/플라워타운",
+    path: "/stores/라초아플라워",
     address: "서울 서대문구 연세로 156",
     location: sinchon,
     hour: ["08:30", "22:00"],
@@ -41,7 +41,7 @@ export const florists: Array<Store> = [
   {
     name: "르마에플라워",
     id: "a8bef084",
-    path: "/stores/원모타임",
+    path: "/stores/르마에플라워",
     address: "서울 서대문구 연세로 156",
     location: sinchon,
     hour: ["08:30", "22:00"],
