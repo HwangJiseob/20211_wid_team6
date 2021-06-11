@@ -23,7 +23,6 @@ interface ImagePopupProps {
 const ImagePopup = (props: ImagePopupProps) => {
   const options: Flower[] = React.useContext(OptionContext);
   const { popup } = props;
-  console.log(popup);
 
   return (
     <Wrapper>

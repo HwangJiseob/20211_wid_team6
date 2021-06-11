@@ -1,4 +1,4 @@
-import { sinchon } from "./locations";
+import { sinchon, hongdae } from "./locations";
 
 export const florists: Array<Store> = [
   {
@@ -19,6 +19,7 @@ export const florists: Array<Store> = [
     id: "49f62dd4",
     path: "/stores/르망마지끄",
     address: "서울 서대문구 연세로 156",
+    coords: [37.55627172660175, 126.9395163425477],
     location: sinchon,
     hour: ["08:30", "22:00"],
     sector: "florist",
@@ -30,7 +31,8 @@ export const florists: Array<Store> = [
     name: "라초아플라워",
     id: "615cf958",
     path: "/stores/라초아플라워",
-    address: "서울 서대문구 연세로 156",
+    address: "서울특별시 서대문구 창천동 31-32",
+    coords: [37.55546929894983, 126.93937704955421],
     location: sinchon,
     hour: ["08:30", "22:00"],
     sector: "florist",
@@ -42,12 +44,26 @@ export const florists: Array<Store> = [
     name: "르마에플라워",
     id: "a8bef084",
     path: "/stores/르마에플라워",
-    address: "서울 서대문구 연세로 156",
+    address: "서울특별시 서대문구 창천동 20-41",
+    coords: [37.55521163686885, 126.93428821197897],
     location: sinchon,
     hour: ["08:30", "22:00"],
     sector: "florist",
     likes: 2300,
     reviews: 1000,
+    imgSrc: "2_4_르마에플라워.jpg",
+  },
+  {
+    name: "플로라운지",
+    id: "ssd732jfd",
+    path: "/stores/플로라운지",
+    address: "서울특별시 마포구 서교동 401-16",
+    coords: [37.55729496674272, 126.92523470827224],
+    location: hongdae,
+    hour: ["08:30", "22:00"],
+    sector: "florist",
+    likes: 2300,
+    reviews: 223,
     imgSrc: "2_4_르마에플라워.jpg",
   },
 ];

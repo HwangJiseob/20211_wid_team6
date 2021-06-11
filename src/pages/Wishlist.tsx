@@ -250,8 +250,6 @@ const Step3 = () => {
   const [target] = bill.products;
   const options = target.options.filter((option: any) => option.num > 0);
 
-  console.log(initial);
-
   React.useEffect(() => {
     if (initial) {
       setTimeout(() => {

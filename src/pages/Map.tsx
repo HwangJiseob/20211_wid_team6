@@ -110,10 +110,10 @@ const NotConstantWrapper = ({ initial }: NotConstantWrapperProps) => {
                     후기<div>{card.reviews}개</div>
                   </div>
                   <div>
-                    별점<div>☆ 4.5</div>
+                    별점<div>☆{card.likes / 500}</div>
                   </div>
                   <div>
-                    주력상품<div>효도선물</div>
+                    주력상품<div>애인선물</div>
                   </div>
                 </Descriptions>
               </Card>
